@@ -22,31 +22,28 @@ color_scheme: light
 
 permalink: pretty
 
-exclude:
- # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
-   - .sass-cache/
-   - .jekyll-cache/
-   - gemfiles/
-   - Gemfile
-   - Gemfile.lock
-   - node_modules/
-   - vendor/bundle/
-   - vendor/cache/
-   - vendor/gems/
-   - vendor/ruby/
- # specific to the theme website:
-   - bin/
-   - lib/
-   - "*.gemspec"
-   - "*.gem"
-   - LICENSE.txt
-   - package.json
-   - package-lock.json
-   - Rakefile
-   - README.md
-
-# Set a path/url to a logo that will be displayed instead of the title
-#logo: "/assets/images/just-the-docs.png"
+# exclude:
+#  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
+#    - .sass-cache/
+#    - .jekyll-cache/
+#    - gemfiles/
+#    - Gemfile
+#    - Gemfile.lock
+#    - node_modules/
+#    - vendor/bundle/
+#    - vendor/cache/
+#    - vendor/gems/
+#    - vendor/ruby/
+#  # specific to the theme website:
+#    - bin/
+#    - lib/
+#    - "*.gemspec"
+#    - "*.gem"
+#    - LICENSE.txt
+#    - package.json
+#    - package-lock.json
+#    - Rakefile
+#    - README.md
 
 # Enable or disable the site search
 # Supports true (default) or false
