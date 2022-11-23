@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: default
 title: Configuration
 nav_order: 2
@@ -274,4 +274,4 @@ just_the_docs:
 
 When *all* your pages are in a single collection, its name is not displayed.
 
-The navigation for each collection is a separate name space for page titles: a page in one collection cannot be a child of a page in a different collection, or of a normal page.
+The navigation for each collection is a separate name space for page titles: a page in one collection cannot be a child of a page in a different collection, or of a normal page. -->
