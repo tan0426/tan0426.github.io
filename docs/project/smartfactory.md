@@ -7,3 +7,5 @@ nav_order: 1
 
 # MES-ERP 통합공정 프로젝트
 {: .no_toc }
+
+python notion2githubpages.py
