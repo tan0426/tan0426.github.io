@@ -13,11 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: tan's study room
+title: tan's
 description: 탄동의 공부장
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tan0426.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-logo: "/assets/images/robot_logo.png"
+#logo: "/assets/images/robot_logo.png"
 color_scheme: light
 
 permalink: pretty
