@@ -4,10 +4,6 @@ title: MES-ERP 통합공정 프로젝트
 parent: Project
 nav_order: 1
 ---
-
-# MES-ERP 통합공정 프로젝트
-{: .no_toc }
-
 # SAP ERP-MES 통합공정 개발 프로젝트
 
 > 1조 탄정엔지니어링
