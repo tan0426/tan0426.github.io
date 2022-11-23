@@ -80,7 +80,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 
 ### 🏭 공정 설계
 
-![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%201.png)
+![Untitled1](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled 1.png)
 
 1. 차량 하부는 외부에서 제작되어 컨테이너에 이송되어 오고, 차량의 외장을 가공하여 조립 하는것을 목표로 한다.
 2. 외장에는 하부 파워트레인 이외에도 전장, 라이트 등 추가로 조립되어야 하는 부분이 있다.
