@@ -17,7 +17,7 @@ title: tan's study room
 description: 탄동의 공부장
 baseurl: "/blog/" # the subpath of your site, e.g. /blog
 url: "https://tan0426.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-logo: "/assets/images/robot_logo.png"
+#logo: "/assets/images/robot_logo.png"
 color_scheme: light
 
 permalink: pretty
