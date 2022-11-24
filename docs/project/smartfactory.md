@@ -234,24 +234,24 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 - **BOM DATA TABLE**
     - 테이블들의 join 관계를 설정
     
-    ![Untitled2](./smartfactory_img/Untitled%202.png)
+    ![Untitled2](./smartfactory_img/Untitled 2.png)
     
     - 각각의 테이블을 입력
     
-    ![Untitled3](./smartfactory_img/Untitled%203.png)
+    ![Untitled3](./smartfactory_img/Untitled 3.png)
     
-    ![Untitled4](./smartfactory_img/Untitled%204.png)
+    ![Untitled4](./smartfactory_img/Untitled 4.png)
     
-    ![Untitled5](./smartfactory_img/Untitled%205.png)
+    ![Untitled5](./smartfactory_img/Untitled 5.png)
     
-    ![Untitled6](./smartfactory_img/Untitled%206.png)
+    ![Untitled6](./smartfactory_img/Untitled 6.png)
     
-    ![Untitled7](./smartfactory_img/Untitled%207.png)
+    ![Untitled7](./smartfactory_img/Untitled 7.png)
     
 - **MASTER DATA TABLE**
     - 테이블들의 join 관계를 설정
     
-    ![Untitled8](.smartfactory_img/Untitled%208.png)
+    ![Untitled8](./smartfactory_img/Untitled 08.png)
     
     - 각각의 테이블을 입력
     
