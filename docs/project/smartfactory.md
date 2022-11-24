@@ -251,7 +251,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 - **MASTER DATA TABLE**
     - 테이블들의 join 관계를 설정
     
-    ![Untitled8](./smartfactory_img/Untitled 08.png)
+    ![Untitled8](./smartfactory_img/Untitled 8.png)
     
     - 각각의 테이블을 입력
     
