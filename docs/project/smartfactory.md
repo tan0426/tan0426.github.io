@@ -76,11 +76,11 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 
 ### 📅 계획 표 설정
 
-![Untitled](tan0426.github.io/docs/project/smartfactory_img/Untitled.png){: width="100%",height="40%"}
+![Untitled](.smartfactory_img/Untitled.png)
 
 ### 🏭 공정 설계
 
-![Untitled1](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled 1.png)
+![Untitled1](.smartfactory_img/Untitled 1.png)
 
 1. 차량 하부는 외부에서 제작되어 컨테이너에 이송되어 오고, 차량의 외장을 가공하여 조립 하는것을 목표로 한다.
 2. 외장에는 하부 파워트레인 이외에도 전장, 라이트 등 추가로 조립되어야 하는 부분이 있다.
@@ -234,38 +234,38 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 - **BOM DATA TABLE**
     - 테이블들의 join 관계를 설정
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%202.png)
+    ![Untitled](.smartfactory_img/Untitled%202.png)
     
     - 각각의 테이블을 입력
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%203.png)
+    ![Untitled](.smartfactory_img/Untitled%203.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%204.png)
+    ![Untitled](.smartfactory_img/Untitled%204.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%205.png)
+    ![Untitled](.smartfactory_img/Untitled%205.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%206.png)
+    ![Untitled](.smartfactory_img/Untitled%206.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%207.png)
+    ![Untitled](.smartfactory_img/Untitled%207.png)
     
 - **MASTER DATA TABLE**
     - 테이블들의 join 관계를 설정
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%208.png)
+    ![Untitled](.smartfactory_img/Untitled%208.png)
     
     - 각각의 테이블을 입력
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%209.png)
+    ![Untitled](.smartfactory_img/Untitled%209.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2010.png)
+    ![Untitled](.smartfactory_img/Untitled%2010.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2011.png)
+    ![Untitled](.smartfactory_img/Untitled%2011.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2012.png)
+    ![Untitled](.smartfactory_img/Untitled%2012.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2013.png)
+    ![Untitled](.smartfactory_img/Untitled%2013.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2014.png)
+    ![Untitled](.smartfactory_img/Untitled%2014.png)
     
 
 ### ✏️ 사용자 입력, 수정 화면 설계
@@ -274,7 +274,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 
 - **BOM create or change 화면**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2015.png)
+    ![Untitled](.smartfactory_img/Untitled%2015.png)
     
     1. MITEM CODE를 넣고 DISPLAY 했을 때 없는 코드이면 에러 메세지. (오른쪽에 제품 명 띄워주면 좋을 것 같다. DISPLAY 하기 전에는 아래 입력 창 막혀있어야 한다.)
     2. ITEM CODE를 넣고 ENTER 하면 COMPONENT가 자동으로 생성 됨.
@@ -285,7 +285,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
     
 - **BOM ROUTING create or change 화면**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2016.png)
+    ![Untitled](.smartfactory_img/Untitled%2016.png)
     
     1. MITEM CODE를 넣고 ENTER 하면 오른쪽에 제품 이름이 뜸.(BOM이 없는 아이템이면 에러 메세지.)
     2. ITEM CODE는 MITEM CODE에 따라 SEARCH HELP가 생성됨.
@@ -295,7 +295,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
     6. 나머지 버튼 수행 방식은 이전과 같다. 다만 DELETE의 경우에는 JSONCODE가 생성되어 있지 않을 시 삭제한다.
 - **WORK PLAN create or change 화면**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2017.png)
+    ![Untitled](.smartfactory_img/Untitled%2017.png)
     
     1. MITEM CODE를 입력하고 ENTER 하면 COMPONENT, DESCRIPTION이 자동 생성 됨.
     2. PLAN_DATE, PLAN_QT를 입력하고 PLAN_CONFIRM은 체크박스로 한다.
@@ -309,19 +309,19 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 
 - **BOM Display 화면**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2018.png)
+    ![Untitled](.smartfactory_img/Untitled%2018.png)
     
     1. MITEM CODE를 입력하고 ENTER를 입력하면 오른쪽에 제품 이름이 뜸.
     2. IMITEM CODE를 입력하고 ENTER를 누른 후 DISPLAY를 클릭하면 ALV화면에 아래쪽 테이블이 쭉 뜸.
 - **BOM ROUTING Display 화면**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2019.png)
+    ![Untitled](.smartfactory_img/Untitled%2019.png)
     
     1. MITEM CODE를 입력하고 ENTER를 입력하면 오른쪽에 제품 이름이 뜸.
     2. IMITEM CODE를 입력하고 ENTER를 누른 후 DISPLAY를 클릭하면 ALV화면에 아래쪽 테이블이 쭉 뜸.
 - **WORK PLAN Display 화면**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2020.png)
+    ![Untitled](.smartfactory_img/Untitled%2020.png)
     
     1. MITEM CODE를 입력하고 DISPLAY를 클릭하면 ALV화면에 아래쪽 테이블이 쭉 뜸.
     2. PLAN이 CONFIRM되어 있으면 그린 라이트를 띄워줌.
@@ -330,7 +330,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 
 - **BOM create or change screen**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2021.png)
+    ![Untitled](.smartfactory_img/Untitled%2021.png)
     
     - **SEARCH HELP & AUTO COMPLITE LIST**
         
@@ -384,7 +384,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
             
         - SCREEN 100
             
-            ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2022.png)
+            ![Untitled](.smartfactory_img/Untitled%2022.png)
             
             ```abap
             PROCESS BEFORE OUTPUT.
@@ -535,7 +535,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
                 
 - **BOM ROUTING create or change screen**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2023.png)
+    ![Untitled](.smartfactory_img/Untitled%2023.png)
     
     - **SEARCH HELP & AUTO COMPLITE LIST**
         
@@ -581,7 +581,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
             
         - SCREEN 100
             
-            ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2024.png)
+            ![Untitled](.smartfactory_img/Untitled%2024.png)
             
             USER-COMMAND 모듈에서 CREATE 버튼을 클릭 시 JSON CODE가 자동 생성되는 코드는 CONCATENATE 명령어를 이용하였다. 다음은 WHEN ‘CREA’ 버튼 동작 코드이다.
             
@@ -630,7 +630,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
             
 - **WORK PLAN create or change screen**
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2025.png)
+    ![Untitled](.smartfactory_img/Untitled%2025.png)
     
     - **SEARCH HELP & AUTO COMPLITE LIST**
         
@@ -675,7 +675,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
             
         - SCREEN 100
             
-            ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2026.png)
+            ![Untitled](.smartfactory_img/Untitled%2026.png)
             
             USER-COMMAND 모듈에서 추가 버튼 클릭 시 BOMROUTING이 있는 모품목만 추가 되도록 하기 위해서 SELECT INNERJOIN을 이용했다. 품목군도 불러오기 위해 품목군 테이블을 추가로 JOIN 했다.
             
@@ -755,13 +755,13 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 - **BOM, ROUTING, WORK PLAN 통합 ALV 조회 화면**
     
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2027.png)
+    ![Untitled](.smartfactory_img/Untitled%2027.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2028.png)
+    ![Untitled](.smartfactory_img/Untitled%2028.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2029.png)
+    ![Untitled](.smartfactory_img/Untitled%2029.png)
     
-    ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2030.png)
+    ![Untitled](.smartfactory_img/Untitled%2030.png)
     
     - **SEARCH HELP & AUTO COMPLITE LIST**
         - **서치 헬프 필드**
@@ -784,7 +784,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
             
         - SCREEN 100
             
-            ![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2031.png)
+            ![Untitled](.smartfactory_img/Untitled%2031.png)
             
             USER-COMMAND 모듈에서 조회 버튼을 각각 클릭 시 생성되는 스크린은 각각 다르게 하여 ALV화면을 구성하였다.
             
@@ -873,7 +873,7 @@ exec usp_viewBoxPos @BoxID=1 --Box의 내용물 모니터링
 exec usp_viewStep @OrderPno=50 --특정 품목의 스텝별 작업 진행여부 모니터링
 ```
 
-![Untitled](tan0426.github.io/docs/project/SAP ERP-MES 통합공정 개발 프로젝트 76ed9f7dfe9545e6911758ff6f09a9bf/Untitled%2032.png)
+![Untitled](.smartfactory_img/Untitled%2032.png)
 
 각 공정별로 실행이 잘 됨을 확인 할 수 있다.
 
