@@ -76,7 +76,7 @@ SAP ERP 프로그램 사용자가 재료, 플랜트 등 마스터 데이터를 �
 
 ### 📅 계획 표 설정
 
-![Untitled](.smartfactory_img/Untitled.png)
+![Untitled](./smartfactory_img/Untitled.png)
 
 ### 🏭 공정 설계
 
