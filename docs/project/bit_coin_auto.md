@@ -48,13 +48,13 @@ nav_order: 2
     
     백테스팅 프로그램을 만든 후 상수값만 계속 바꿔주어 높은 수익률이 발생하는 지점을 구했다. 이 때 수수료를 꼭 고려해야 한다.
     
-    ![Untitled](./smartfactory_img/Untitled.png)
+    ![Untitled](./bitcoin_img/Untitled 10.png)
 - **Several Issues**
     - **Issue 1**
         
         엑셀을 최대한 이용하여 백테스팅을 하려다 보니, 구매 후 보유 중 임을 확인 하고 계산하기가 어려웠다. 그래서 엑셀은 최대한 기본적인 데이터를 저장하는 용도로만 사용하고, 파이썬을 이용해 실제 실행할 프로그램과 유사하게 구성하여 수익 확인에 필요한 값만을 엑셀에 표시하는 방식으로 진행했다.
         
-        ![Untitled1](./smartfactory_img/Untitled 1.png)
+        ![Untitled1](./bitcoin_img/Untitled 11.png)
         
     - **Issue 2**
         
