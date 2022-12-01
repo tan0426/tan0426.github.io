@@ -7,7 +7,7 @@ nav_order: 16
 # 찾아서 볼 ALV, INCLUDE 프로그램 코드
 
 1. MAIN PROGRAM
-```ABAP
+```abap
 *&---------------------------------------------------------------------*
 *& Report ZDSUWON02_TEST_01
 *&---------------------------------------------------------------------*
@@ -28,7 +28,7 @@ CALL SCREEN 100. /바로 스크린 호출
 PERFORM CALL_FUNCTION. /팝업창으로 스크린 호출
 ```
 2. TOP
-```ABAP
+```abap
 *&---------------------------------------------------------------------*
 *& Include          ZDSUWON02_TEST_01_TOP
 *&---------------------------------------------------------------------*
@@ -73,11 +73,11 @@ DATA : GS_VARIANT TYPE DISVARIANT.
 DATA : GT_TOOLBAR TYPE UI_FUNCTIONS.
 ```
 3. SCR
-```ABAP
+```abap
 SELECT-OPTIONS : S_ZCODE FOR ZTSUWON02_HR-ZCODE.
 ```
 4. PBO
-```ABAP
+```abap
 *&---------------------------------------------------------------------*
 *& Include          ZDSUWON02_TEST_01_PBO
 *&---------------------------------------------------------------------*
@@ -117,7 +117,7 @@ MODULE status_0200 OUTPUT.
 ENDMODULE.
 ```
 5. PAI
-```ABAP
+```abap
 *&---------------------------------------------------------------------*
 *& Include          ZDSUWON02_TEST_01_PAI
 *&---------------------------------------------------------------------*
@@ -219,7 +219,7 @@ MODULE user_command_0200 INPUT.
 ENDMODULE.
 ```
 6. F01
-```ABAP
+```abap
 *&---------------------------------------------------------------------*
 *& Include          ZDSUWON02_TEST_01_F01
 *&---------------------------------------------------------------------*
@@ -660,7 +660,7 @@ FORM call_function .
 ENDFORM.
 ```
 7. PERFORM GET DATA
-```ABAP
+```abap
 *& text
 *&---------------------------------------------------------------------*
 *& -->  p1        text
@@ -701,7 +701,7 @@ FORM get_data .
 ENDFORM.
 ```
 8. CALL SCREEN 100
-```ABAP
+```abap
 PROCESS BEFORE OUTPUT.
  MODULE STATUS_0100.
  MODULE DISPLAY.
@@ -710,7 +710,7 @@ PROCESS AFTER INPUT.
  MODULE USER_COMMAND_0100.
 ```
 9. CALL SCREEN 200
-```ABAP
+```abap
 PROCESS BEFORE OUTPUT.
  MODULE STATUS_0200.
 
