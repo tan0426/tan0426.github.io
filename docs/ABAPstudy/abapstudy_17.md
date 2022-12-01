@@ -6,7 +6,7 @@ nav_order: 17
 ---
 # 찾아서 볼 백그라운드 로직
 
-```ABAP
+```abap
 REPORT ZRSUWON02_1024.
 
 "HR->HR_T
