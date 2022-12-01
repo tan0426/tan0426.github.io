@@ -6,7 +6,7 @@ nav_order: 20
 ---
 # DUMP를 피하기 위한 TRY CATCH문
 
-```ABAP
+```abap
 TRY .
 
 EXEC SQL.
