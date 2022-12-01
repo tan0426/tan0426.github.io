@@ -7,7 +7,7 @@ nav_order: 15
 # 찾아서 볼 FIELD CATALOG 기능들
 
 1. SCRTEXT_L, SCRTEXT_M, SCRTEXT_S
-```ABAP
+```abap
 GS_FCAT-fieldname = 'ZCODE'.
 *GS_FCAT-COLTEXT = '코드'.
 GS_FCAT-SELTEXT_L = '코드롱롱롱'.
@@ -18,13 +18,13 @@ CLEAR GS_FCAT.
 ```
 
 2. EMPHASIZE, HOTSPOT
-```ABAP
+```abap
 GS_FCAT-EMPHASIZE = 'C300'. "C(COLOR) 3(노랑) 0(강조) 0(반전)
 GS_FCAT-HOTSPOT = 'X'.
 ```
 
 3. NO_OUT, TECH, EDIT, CHECKBOX
-```ABAP
+```abap
 GS_FCAT-FIELDNAME = 'CHECK'.
 GS_FCAT-COLTEXT = '체크박스'.
 GS_FCAT-CHECKBOX = 'X'. "체크박스
@@ -37,7 +37,7 @@ CLEAR GS_FCAT.
 ```
 
 4. KEY, JUST
-```ABAP
+```abap
 GS_FCAT-FIELDNAME = 'ZCODE'.
 GS_FCAT-COLTEXT = '코드'.
 GS_FCAT-KEY = 'X'. "ABAP에서는 TRUE/FULSE OR ON/OFF OR 1/0
