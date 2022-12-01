@@ -18,7 +18,7 @@ SNRO에서 NUMBER RANGE를 생성한다.
 
 ![Untitled](./abapstudy_img/abapstudy_23.png)
 
-```ABAP
+```abap
 DATA : GV_SNRO(3).
 DATA : GV_WO(5).
 
