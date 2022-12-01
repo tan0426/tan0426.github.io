@@ -25,7 +25,7 @@ PROCESS AFTER INPUT.
 # 1. CUSTOM ALV
 GRID를 담을 CONTAINER 생성
 ![Untitled](./abapstudy_img/abapstudy_12.png)
-```ABAP
+```abap
 CREATE OBJECT GC_CUSTOM
     exporting
 *      parent                      =
@@ -37,7 +37,7 @@ CONTAINER가 아님 주의.
 
 테이블메소드를 그릴 GRID 생성
 ![Untitled](./abapstudy_img/abapstudy_13.png)
-```ABAP
+```abap
 CREATE OBJECT GC_GRID
     exporting
 *      i_shellstyle      = 0
@@ -47,7 +47,7 @@ CREATE OBJECT GC_GRID
 GC_CUSTOM이라는 컨테이너 오브젝트에 담기므로 I_PARENT는 GC_CUSTOM이 된다.
 
 여기서 오브젝트 변수들을 선언해주고 넘어가본다.
-```ABAP
+```abap
 DATA : GC_CUSTOM TYPE REF TO CL_GUI_CUSTOM_CONTAINER.
 DATA : GC_CUSTOM2 TYPE REF TO CL_GUI_CUSTOM_CONTAINER.
 DATA : GC_GRID TYPE REF TO CL_GUI_ALV_GRID.
@@ -55,7 +55,7 @@ DATA : GC_GRID2 TYPE REF TO CL_GUI_ALV_GRID.
 ```
 그리드에 그릴 표 메소드를 생성한다.
 ![Untitled](./abapstudy_img/abapstudy_14.png)
-```ABAP
+```abap
 CALL METHOD gc_grid->set_table_for_first_display
 *      ir_salv_adapter               =
     CHANGING
@@ -69,7 +69,7 @@ CALL METHOD gc_grid->set_table_for_first_display
 으로 LVC_T_FCAT을 옵션으로 사용한다.
 ![Untitled](./abapstudy_img/abapstudy_16.png)
 
-```ABAP
+```abap
 DATA : BEGIN OF gs_data,
         zcode TYPE ztsuwon02_hr-zcode,
         zname TYPE ztsuwon02_hr-zname,
@@ -83,7 +83,7 @@ DATA : GT_FCAT TYPE LVC_T_FCAT,
 
 그리고 필드 네임들은 스크린이 뜨기 전에 구성되어있어야 하므로 PBO에 함께 지정해 준다.
 
-```ABAP
+```abap
 GS_FCAT-FIELDNAME = 'ZCODE'.
 GS_FCAT-COLTEXT = '코드'.
 APPEND GS_FCAT TO GT_FCAT.
@@ -100,7 +100,7 @@ DOCKING 컨테이너를 만들고 그리드를 생성 한 후 메소드를 넣�
 DOCKING CONTAINER 생성
 ![Untitled](./abapstudy_img/abapstudy_17.png)
 
-```ABAP
+```abap
 CREATE OBJECT GC_DOCKING
   EXPORTING
 *    parent                      =
@@ -110,7 +110,7 @@ CREATE OBJECT GC_DOCKING
     extension                   = 300
 ```
 여기서 도킹 클래스를 확인해 본다. 클래스는 SE24에서 확인 가능.
-```ABAP
+```abap
 CREATE OBJECT GC_GRID
   exporting
 *    i_shellstyle      = 0
@@ -120,7 +120,7 @@ CREATE OBJECT GC_GRID
 GRID 생성 후 GRID METHOD 호출은 같은 방식.
 
 # 3. SPLITTER ALV
-```ABAP
+```abap
 DATA : GC_DOCKING TYPE REF TO CL_GUI_DOCKING_CONTAINER.
 DATA : GC_SPLITTER TYPE REF TO CL_GUI_SPLITTER_CONTAINER.
 DATA : GC_CONTAINER_1 TYPE REF TO CL_GUI_CONTAINER.
@@ -132,7 +132,7 @@ DOCKING을 생성 후 그 안에 SPLITTER를 넣는다.
 위의 ALV들과 다른 점은 나눈 SPLITTER들에 하나하나 위치 메소드를 지정 해 준 후 객체를 생성하여 집어넣어야한다.
 
 DOCKING CONTAINER 생성 후 SPLITTER CONTAINER 생성
-```ABAP
+```abap
 CREATE OBJECT GC_SPLITTER
     EXPORTING
       parent            = GC_DOCKING
@@ -141,7 +141,7 @@ CREATE OBJECT GC_SPLITTER
 ```
 이후 나누어진 SPLITTER들 위치를 할당할 메소드를 불러 와서 할당.
 ![Untitled](./abapstudy_img/abapstudy_18.png)
-```ABAP
+```abap
 CALL METHOD gc_splitter->get_container
   EXPORTING
     row       = 1
@@ -159,7 +159,7 @@ CALL METHOD gc_splitter->get_container
 ```
 (1,1) SPLITTER 자리를 GC_CONTAINER_1이라고 지정함. 이후 이 컨테이너에 그리드를 넣어 줌
 
-```ABAP
+```abap
 CREATE OBJECT GC_GRID_1
   exporting
 *    i_shellstyle      = 0
