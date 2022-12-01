@@ -10,7 +10,7 @@ REFRESH_TABLE_DISPLAY는 이름이  REFRESH가 들어가서 표를 새로고침 
 
 예를 들면
 
-```ABAP
+```abap
 WHEN 'APPEND'.
       READ TABLE GT_DATA INTO GS_DATA INDEX 1.
       APPEND GS_DATA TO GT_DATA.
@@ -23,7 +23,7 @@ APPEND라는 버튼을 누르면 인터널 테이블 첫번째 줄 값을 다시
 
 PBO 에
 
-```ABAP
+```abap
 CALL METHOD gc_grid_1->refresh_table_display
       EXPORTING
         is_stable      = LS_STABLE
@@ -37,7 +37,7 @@ CALL METHOD gc_grid_1->refresh_table_display
     ENDIF.
 ```
 CL_GUI_ALV_GRID 클래스의 REFRESH_TABLE_DISPLAY 메소드를 호출하여 새로고침을 하여
-```ABAP
+```abap
 MODULE alv_display_0100 OUTPUT.
 
   IF GC_DOCKING IS INITIAL.
