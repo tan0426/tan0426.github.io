@@ -9,10 +9,10 @@ nav_order: 18
 1. 간단한 화면 구성
 
 MAIN PROGRAM에 테이블 컨트롤을 선언해 준다.
-```ABAP
+```abap
 CONTROLS TC100 TYPE TABLEVIEW USING SCREEN 100.
 ```
-```ABAP
+```abap
 PROCESS BEFORE OUTPUT.
  MODULE STATUS_0100.
  "ABAP > SCREEN
@@ -29,7 +29,7 @@ PROCESS AFTER INPUT.
  MODULE USER_COMMAND_0100.
  ```
  PBO와 PAI에 LOOP을 돌려 한줄씩 적어넣는 느낌인것 같다.
- ```ABAP
+ ```abap
  MODULE status_0100 OUTPUT.
  SET PF-STATUS 'STATUS100'.
  SET TITLEBAR 'T100'.
@@ -50,7 +50,7 @@ PBO의 버튼설정을 해놓은 모듈에 함께 SELECT를 해서 넣는다.
 
 DESCRIBE TABLE을 해야 테이블에 맞추어 스크롤이 생성되는것 같다.
 
-```ABAP
+```abap
 MODULE init_tc100 OUTPUT.
   LOOP AT SCREEN.
     IF SCREEN-NAME = 'GS_DATA-ZEMPNO'.
@@ -79,7 +79,7 @@ MODULE move_screen_to_abap INPUT.
 ENDMODULE.
 ```
 스크린 입력을 0으로 MODIFY해주는 INITIAL 조건 모듈을 지정해 준다.
-```ABAP
+```abap
 MODULE init_tc100 OUTPUT.
   LOOP AT SCREEN.
     IF SCREEN-GROUP1 = 'GR1'.
@@ -98,7 +98,7 @@ PAI의  SCREEN TO ABAP모듈에 MODIFY한다.
 
 2. 필수값 설정, SAVE, REFRESH, 특정 필드값에따른 입력 설정
 
-```ABAP
+```abap
 PROCESS BEFORE OUTPUT.
  MODULE STATUS_0100.
  MODULE INIT_SCREEN.
@@ -116,7 +116,7 @@ PROCESS AFTER INPUT.
  ```
  STATUS_0100모듈에는 버튼설정과 테이블 스크롤을 설정한다. (DESCRIBE TABLE)
  
- ```ABAP
+ ```abap
  MODULE init_screen OUTPUT.
   LOOP AT SCREEN.
     IF SCREEN-NAME = 'ZSDATE_LOW'.
@@ -127,7 +127,7 @@ PROCESS AFTER INPUT.
 ENDMODULE.
 ```
 INIT_SCREEN은 스크린을 LOOP로 돌려 ZSDATE_LOW 입력부를 REQUIRED로 필수값 설정을 한다.
-```ABAP
+```abap
 MODULE init_tc100 OUTPUT.
   LOOP AT SCREEN.
     "사원번호 칼럼 비활성화
