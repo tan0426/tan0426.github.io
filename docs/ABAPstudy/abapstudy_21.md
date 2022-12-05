@@ -20,6 +20,8 @@ CALL METHOD gc_grid->register_edit_event
   ENDIF.
 ```
 
+처음 ALV GRID를 뿌리는곳에 같이 적어준다.
+
 CALL METHOD
 INSTANCE : GC_GRID
 CLASS/INTERFACE : CL_GUI_ALV_GRID
