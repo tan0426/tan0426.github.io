@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 꺼내서 볼 select 에서 where 이용, range
+title: 5. 꺼내서 볼 select 에서 where 이용, range
 parent: abapstudy
 nav_order: 5
 ---
-# 꺼내서 볼 select 에서 where 이용, range
+# 5. 꺼내서 볼 select 에서 where 이용, range
 
 ```abap
 SELECT *
