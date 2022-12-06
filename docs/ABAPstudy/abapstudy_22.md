@@ -1,10 +1,10 @@
 ---
 layout: default
-title: SUB SCREEN(SEARCH HELP) 생성
+title: 22. SUB SCREEN(SEARCH HELP) 생성
 parent: abapstudy
 nav_order: 22
 ---
-# SUB SCREEN(SEARCH HELP) 생성
+# 22. SUB SCREEN(SEARCH HELP) 생성
             
 ![Untitled](./abapstudy_img/abapstudy_24.PNG)
 
