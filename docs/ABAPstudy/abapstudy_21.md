@@ -1,10 +1,10 @@
 ---
 layout: default
-title: ALV DATA CHANGED
+title: 21. ALV DATA CHANGED
 parent: abapstudy
 nav_order: 21
 ---
-# ALV DATA CHANGED
+# 21. ALV DATA CHANGED
 ALV의 EDIT된 값 변경하고 ENTER또는 버튼 클릭 시 그 변경된 값을 가져오는 방법
 
 ```abap
