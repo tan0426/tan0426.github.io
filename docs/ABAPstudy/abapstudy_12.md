@@ -1,10 +1,10 @@
 ---
 layout: default
-title: CLASS 학습
+title: 12. CLASS 학습
 parent: abapstudy
 nav_order: 12
 ---
-# CLASS 학습
+# 12. CLASS 학습
 
 ```abap
 REPORT ZRSUWON02_1019_2.
