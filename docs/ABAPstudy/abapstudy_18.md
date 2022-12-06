@@ -1,10 +1,10 @@
 ---
 layout: default
-title: MODULE POOL에서 TABLE CONTROL 학습
+title: 18. MODULE POOL에서 TABLE CONTROL 학습
 parent: abapstudy
 nav_order: 18
 ---
-# MODULE POOL에서 TABLE CONTROL 학습
+# 18. MODULE POOL에서 TABLE CONTROL 학습
 
 1. 간단한 화면 구성
 
