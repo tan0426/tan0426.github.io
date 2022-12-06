@@ -1,10 +1,10 @@
 ---
 layout: default
-title: ALV EDIT에서 값 받아오기
+title: 23. ALV EDIT에서 값 받아오기
 parent: abapstudy
 nav_order: 23
 ---
-# ALV EDIT에서 값 받아오기
+# 23. ALV EDIT에서 값 받아오기
             
 ALV에서 값을 입력 한 후 DB에 저장 하고자 하는데, ALV에 입력한 값이 관련 인터널 테이블로 업데이트가 안된다.
 
