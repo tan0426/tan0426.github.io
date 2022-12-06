@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 찾아서 볼 FIELD CATALOG 기능들
+title: 15. 찾아서 볼 FIELD CATALOG 기능들
 parent: abapstudy
 nav_order: 15
 ---
-# 찾아서 볼 FIELD CATALOG 기능들
+# 15. 찾아서 볼 FIELD CATALOG 기능들
 
 1. SCRTEXT_L, SCRTEXT_M, SCRTEXT_S
 ```abap
