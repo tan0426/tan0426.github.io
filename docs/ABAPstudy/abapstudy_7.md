@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 찾아 볼 PARAMETER, SCREEN 정리
+title: 7. 찾아 볼 PARAMETER, SCREEN 정리
 parent: abapstudy
 nav_order: 7
 ---
-# 찾아 볼 PARAMETER, SCREEN 정리
+# 7. 찾아 볼 PARAMETER, SCREEN 정리
 
 ```abap
 REPORT ZDSUWON02_1017 NO STANDARD PAGE HEADING.
