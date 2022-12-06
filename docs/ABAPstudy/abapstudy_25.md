@@ -79,4 +79,4 @@ ENDFORM.
   ENDFORM.
 ```
 
-![Untitled](./abapstudy_img/abapstudy_28.png)
+![Untitled](./abapstudy_img/abapstudy_28.PNG)
