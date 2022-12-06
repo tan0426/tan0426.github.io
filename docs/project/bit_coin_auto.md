@@ -1,9 +1,9 @@
----
+<!-- ---
 layout: default
 title: 비트코인 자동매매
 parent: Project
 nav_order: 2
----
+--- -->
 # 비트코인 자동화 프로그램 프로젝트
 
 ## 🗃️ Table of Contents
