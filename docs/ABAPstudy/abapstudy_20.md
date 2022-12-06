@@ -1,10 +1,10 @@
 ---
 layout: default
-title: DUMP를 피하기 위한 TRY CATCH문
+title: 20. DUMP를 피하기 위한 TRY CATCH문
 parent: abapstudy
 nav_order: 20
 ---
-# DUMP를 피하기 위한 TRY CATCH문
+# 20. DUMP를 피하기 위한 TRY CATCH문
 
 ```abap
 TRY .
