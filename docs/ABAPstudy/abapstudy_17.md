@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 찾아서 볼 백그라운드 로직
+title: 17. 찾아서 볼 백그라운드 로직
 parent: abapstudy
 nav_order: 17
 ---
-# 찾아서 볼 백그라운드 로직
+# 17. 찾아서 볼 백그라운드 로직
 
 ```abap
 REPORT ZRSUWON02_1024.
