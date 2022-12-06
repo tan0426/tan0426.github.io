@@ -1,10 +1,10 @@
 ---
 layout: default
-title: AT SELECTION-SCREEN으로 조건달기
+title: 9. AT SELECTION-SCREEN으로 조건달기
 parent: abapstudy
 nav_order: 9
 ---
-# AT SELECTION-SCREEN으로 조건달기
+# 9. AT SELECTION-SCREEN으로 조건달기
 
 ```abap
 AT SELECTION-SCREEN ON S_ZSDATE.
