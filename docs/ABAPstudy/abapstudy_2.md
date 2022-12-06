@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 인터널 테이블 정리
+title: 2. 인터널 테이블 정리
 parent: abapstudy
 nav_order: 2
 ---
-# system 변수와 수 정리
+# 2. system 변수와 수 정리
 
 인터널 테이블이 무엇인지 제대로 알려주지 않아서 검색해 보니,
 
