@@ -1,10 +1,10 @@
 ---
 layout: default
-title: JOIN, FOR ALL ENTRIES IN구문 정리
+title: 6. JOIN, FOR ALL ENTRIES IN구문 정리
 parent: abapstudy
 nav_order: 6
 ---
-# JOIN, FOR ALL ENTRIES IN구문 정리
+# 6. JOIN, FOR ALL ENTRIES IN구문 정리
 
 ```abap
 SELECT ZTTEST_215_HR~ZCODE ZTTEST_215_HR~ZNAME ZTTEST_215_UNI~ZMAJOR
