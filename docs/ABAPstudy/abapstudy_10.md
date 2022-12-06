@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 찾아서 볼 WRITE 표 그리기 노가다
+title: 10. 찾아서 볼 WRITE 표 그리기 노가다
 parent: abapstudy
 nav_order: 10
 ---
-# 찾아서 볼 WRITE 표 그리기 노가다
+# 10. 찾아서 볼 WRITE 표 그리기 노가다
 
 ```abap
 TABLES : ZDSUWONT02.
