@@ -1,10 +1,10 @@
 ---
 layout: default
-title: ALV 학습
+title: 13. ALV 학습
 parent: abapstudy
 nav_order: 13
 ---
-# ALV 학습
+# 13. ALV 학습
 
 ![Untitled](./abapstudy_img/abapstudy_10.png)
 우선 ALV는 스크린을 띄울때 바로 화면에 나와야 하므로 스크린을 띄우기 전에 세팅이 되어있어야 하는 부분이다.
