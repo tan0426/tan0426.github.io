@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 숫자를 자동으로 집어넣고 싶을 때 찾아보는 코드
+title: 19. 숫자를 자동으로 집어넣고 싶을 때 찾아보는 코드
 parent: abapstudy
 nav_order: 19
 ---
-# 숫자를 자동으로 집어넣고 싶을 때 찾아보는 코드
+# 19. 숫자를 자동으로 집어넣고 싶을 때 찾아보는 코드
 
 SNRO에서 NUMBER RANGE를 생성한다.
 
