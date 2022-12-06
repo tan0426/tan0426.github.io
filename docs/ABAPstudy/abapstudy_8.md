@@ -1,10 +1,10 @@
 ---
 layout: default
-title: SELECT-OPTIONS에 SEARCH HELP 넣기
+title: 8. SELECT-OPTIONS에 SEARCH HELP 넣기
 parent: abapstudy
 nav_order: 8
 ---
-# SELECT-OPTIONS에 SEARCH HELP 넣기
+# 8. SELECT-OPTIONS에 SEARCH HELP 넣기
 
 ```abap
 AT SELECTION-SCREEN ON VALUE-REQUEST FOR S_ZEMPNO-LOW.
