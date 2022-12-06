@@ -1,10 +1,10 @@
 ---
 layout: default
-title: ALV REFRESH에 대해
+title: 14. ALV REFRESH에 대해
 parent: abapstudy
 nav_order: 14
 ---
-# ALV REFRESH에 대해
+# 14. ALV REFRESH에 대해
 
 REFRESH_TABLE_DISPLAY는 이름이  REFRESH가 들어가서 표를 새로고침 하는 개념인것 같다.
 
