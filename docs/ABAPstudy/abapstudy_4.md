@@ -1,10 +1,10 @@
 ---
 layout: default
-title: table 정리
+title: 4. table 정리
 parent: abapstudy
 nav_order: 4
 ---
-# table 정리
+# 4. table 정리
 
 table의 종류에는 세 가지가 있다고 한다.
 
