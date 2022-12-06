@@ -1,10 +1,10 @@
 ---
 layout: default
-title: message type
+title: 3. message type
 parent: abapstudy
 nav_order: 3
 ---
-# message type
+# 3. message type
            
 ![Untitled](./abapstudy_img/abapstudy_4.png)
 
