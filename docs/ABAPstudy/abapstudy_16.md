@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 찾아서 볼 ALV, INCLUDE 프로그램 코드
+title: 16. 찾아서 볼 ALV, INCLUDE 프로그램 코드
 parent: abapstudy
 nav_order: 16
 ---
-# 찾아서 볼 ALV, INCLUDE 프로그램 코드
+# 16. 찾아서 볼 ALV, INCLUDE 프로그램 코드
 
 1. MAIN PROGRAM
 
