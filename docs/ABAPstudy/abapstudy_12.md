@@ -41,6 +41,7 @@ CALL METHOD GO_1->M1. "메소드 호출
 
 ## 사용 예제
 1. ALV에서 DOUBLE CLICK 예제
+
 ```abap
 CLASS EVENT DEFINITION.
   PUBLIC SECTION.
