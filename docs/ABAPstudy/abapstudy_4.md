@@ -14,7 +14,7 @@ standard table, sorted table, hashed table.
 
 그 중 standard table에 대해 배웠다.
 
-standard table은
+### standard table은
 
 1. 순차적인 index를 가지고 ( 그냥 적힌 순서대로 나열된다는 뜻인 듯. index1하면 첫번째줄 데이터를 찾을 수 있는 정도?),
 
@@ -61,7 +61,7 @@ WRITE : /SY-SUBRC.
 ```
 빨리 찾을 수 있는? 한 방법 인 것 같다.
 
-sorted table은
+### sorted table은
 
 1. key 값으로 항상 정렬 되어 있다. (unique, non-unique 모두 설정 가능하고 unique key 설정하면 중복되는값은 쌓이지 않고 non-unique key 설정하면 중복되는값도 쌓인다.)
 
@@ -105,7 +105,7 @@ CL_DEMO_OUTPUT=>DISPLAY( GT_DATA ).
 
 3. index나 key로 해당 행을 찾을 수 있다.
 
-hashed table은
+### hashed table은
 
 1. 순차적인 index를 사용하지 않아서 read table - index 구문이 사용 불가.
 
