@@ -151,3 +151,11 @@ ENDIF.
 ```
 
 다른 테이블과 생성 방식은 비슷한데, index로 한줄 한줄 읽어오는것이 안된다는게 독특한 점인듯 하다.
+
+## 인터널 테이블 중복값 제거 후 정리 예시
+
+```abap
+SORT GT_DATA BY WAREID ITEM_CODE TOTALQT.
+
+DELETE ADJACENT DUPLICATES FROM GT_DATA COMPARING WAREID ITEM_CODE TOTALQT.
+```
