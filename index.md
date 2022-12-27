@@ -9,4 +9,4 @@ permalink: /
 # 탄동의 공부장
 {: .fs-9 }
 
-![Untitled](./main_img/dev_desk.jpeg)
+![Untitled](./docs/main_img/dev_desk.jpeg)
