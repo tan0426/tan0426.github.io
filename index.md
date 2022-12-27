@@ -2,12 +2,11 @@
 layout: default
 title: Introduction
 nav_order: 1
-description: "HIhi"
+description: "fist page"
 permalink: /
 ---
 
-# Hello
+# 탄동의 공부장
 {: .fs-9 }
 
-HI
-{: .fs-6 .fw-300 }
+![Untitled](./main_img/dev_desk.jpeg)
