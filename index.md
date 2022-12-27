@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Introduction
+title: tandong's study note
 nav_order: 1
 description: "fist page"
 permalink: /
