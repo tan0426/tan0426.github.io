@@ -6,7 +6,7 @@ description: "fist page"
 permalink: /
 ---
 
-## 탄동의 공부장
-{: .fs-9 }
+### 탄동의 공부장
+<!-- {: .fs-9 } -->
 
 ![Untitled](./docs/main_img/dev_desk.jpeg)
