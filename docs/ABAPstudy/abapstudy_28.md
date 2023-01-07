@@ -45,7 +45,7 @@ FIELD-SYMBOLS <FS3> LIKE GT_TAB.
 ```
 
 FIELD-SYMBOLS [FS2] TYPE ANY TABLE을 사용하기 위해서는 ASSIGN 구문에서 할당할 인터널 테이블이 TABLE 타입으로 선언되어야 함.
-이렇게 선언된 FIELD SYMBOL은 그 자체가 인터널 테이블이 되어 READ와 같은 구문을 사용 할 수 있습니다.
+이렇게 선언된 FIELD SYMBOL은 그 자체가 인터널 테이블이 되어 READ와 같은 구문을 사용 할 수 있음.
   
 FIELD SYMBOL을 READ 하기 위해서는 TYPE ANY TABLE로 선언하여야 FIELD SYMBOL이 인터널 테이블 역할을 수행하게 되고 (FNAME)을 사용하여
 동적 구문을 이용함.
