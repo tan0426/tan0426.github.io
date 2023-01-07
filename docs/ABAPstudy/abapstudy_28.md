@@ -123,6 +123,65 @@ LOOP AT lt_fieldcat ASSIGNING <ls_fcat>.
 ENDLOOP.
 ```
 
+## 실습
+
+```abap
+DATA : BEGIN OF gs_data.
+        INCLUDE STRUCTURE zt2302_01.
+DATA : END OF gs_data,
+       gt_data LIKE TABLE OF gs_data.
+
+FIELD-SYMBOLS <field>.
+
+DATA : fname(100), sum LIKE zt2302_01-mon01.
+DATA : cc(2).
+
+DO 12 TIMES.
+  cc = sy-index.
+
+  IF strlen( cc ) = 1.
+    CONCATENATE '0' cc INTO cc.
+  ELSE.
+  ENDIF.
+
+  CONCATENATE 'gs_data-MON' cc INTO fname.
+  ASSIGN (fname) TO <field>.
+
+  <field> = sy-index.
+  APPEND gs_data to gt_data.
+  CLEAR gs_data.
+ENDDO.
+
+WRITE : / 'matnr',
+        'mon01',
+        'mon02',
+        'mon03',
+        'mon04',
+        'mon05',
+        'mon06',
+        'mon07',
+        'mon08',
+        'mon09',
+        'mon10',
+        'mon11',
+        'mon12'.
+
+LOOP AT gt_data INTO gs_data.
+  WRITE : / gs_data-matnr,
+          gs_data-mon01,
+          gs_data-mon02,
+          gs_data-mon03,
+          gs_data-mon04,
+          gs_data-mon05,
+          gs_data-mon06,
+          gs_data-mon07,
+          gs_data-mon08,
+          gs_data-mon09,
+          gs_data-mon10,
+          gs_data-mon11,
+          gs_data-mon12.
+ENDLOOP.
+```
   
   
   
