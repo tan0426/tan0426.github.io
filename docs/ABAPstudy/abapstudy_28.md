@@ -44,7 +44,7 @@ FIEDL-SYMBOLS <FS2> TYPE ANY [TABLE].
 FIELD-SYMBOLS <FS3> LIKE GT_TAB.
 ```
 
-FIELD-SYMBOLS <FS2> TYPE ANY TABLE을 사용하기 위해서는 ASSIGN 구문에서 할당할 인터널 테이블이 TABLE 타입으로 선언되어야 함.
+FIELD-SYMBOLS [FS2] TYPE ANY TABLE을 사용하기 위해서는 ASSIGN 구문에서 할당할 인터널 테이블이 TABLE 타입으로 선언되어야 함.
 이렇게 선언된 FIELD SYMBOL은 그 자체가 인터널 테이블이 되어 READ와 같은 구문을 사용 할 수 있습니다.
   
 FIELD SYMBOL을 READ 하기 위해서는 TYPE ANY TABLE로 선언하여야 FIELD SYMBOL이 인터널 테이블 역할을 수행하게 되고 (FNAME)을 사용하여
@@ -68,8 +68,8 @@ ASSIGN line TO <fs>.
 
 MOVE <fs>-col2 TO <fs>-col1.
 ```
-  
-<FS>-CO2와 같이 STRUCTURE처럼 사용하고자 할 경우에는 FIELD SYMBOL을 선언할 경우에 LIKE, 또는 TYPE을 선언하여야 함.
+
+[FS]-CO2와 같이 STRUCTURE처럼 사용하고자 할 경우에는 FIELD SYMBOL을 선언할 경우에 LIKE, 또는 TYPE을 선언하여야 함.
 
 ### FIELD SYMBOL 사용 예 2
 
