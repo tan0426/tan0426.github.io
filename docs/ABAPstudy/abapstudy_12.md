@@ -6,6 +6,48 @@ nav_order: 12
 ---
 # 12. CLASS 학습
 
+### Global Class
+T-CODE : SE24에서 생성/조회/수정이 가능한 클래스
+
+### Local Class 
+SAP ABAP Program 내에서 선언하여 사용하는 클래스
+
+### 선언
+
+```abap
+CLASS <클래스명> DEFINITION
+// PUBLIC SECTION, PRIVATE SECTION, PROTECTED SECTION...
+
+ENDCLASS.
+
+CLASS <클래스명> IMPLEMENTATION.
+
+...
+ENDCLASS.
+```
+### OBJECT REFERENCE 선언
+
+![Untitled](./abapstudy_img/abapstudy_34.png)
+
+```abap
+DATA LO_CLASS TYPE REF TO <CLASS명>.
+```
+
+-> 객체 참조 변수는 이미 존재하는 객체를 참고하거나 초기화 할 수 있으며 객체를 가리키는 참조변수가 객체의 실체를 알고 있으며 클래스의 인스턴스는 객체를 가르키는 참조 변수를 사용하여 주소를 지정.
+객체 참조 변수를 이용하는 개체들은 객체의 구성요소에 직접접근은 불가하므로, REFERENCE(객체의 주소)를 이용해야 함.
+
+### INSTANCE
+하나의 클래스로부터 객체화 선언한 형태를 인스턴스라고함.
+
+### 컴포넌트 (COMPONENT)
+ATTRIBUTE, METHOD, EVENT, INTERFACE, CONSTRUCTOR 등의 구성요소
+
+![Untitled](./abapstudy_img/abapstudy_35.png)
+
+### 접근 제한영역(VISIBILITY SECTION)
+CLASS의 접근 제한영역은 크게 3가지로 구분 됨.
+
+## 1. 사용예제1
 ```abap
 REPORT ZRSUWON02_1019_2.
 
@@ -39,7 +81,7 @@ CALL METHOD GO_1->M1. "메소드 호출
 
 이때 START-OF-SELECTION은 데이터 선언와 구분짓기 위한 것으로, 구분 지을 수 있는 부분이면 어떤것이든 상관없는 듯 하다.
 
-## 사용 예제
+## 사용 예제 2
 1. ALV에서 DOUBLE CLICK 예제
 
 ```abap
