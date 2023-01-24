@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 30. BDC (Batch Data Communication), 엑셀 
+title: 30. BDC, BAPI, 엑셀 
 parent: abapstudy
 nav_order: 30
 ---
@@ -189,4 +189,137 @@ form user_command . " Excel Form 다운로드
   endif.
 
 endform.                    " HANDLE_USER_COMMAND
+```
+
+# BAPI (Buisness Application Programming Interface) : 학습 심화 필요
+
+이하 밥피는 BDC처럼 자동으로 무언가를 불러 와주는 프로그램인데, BDC와 달리 레코드에 저장 해 둘 필요 없고, 레코드를 불러 올 필요 없이 바로 입력 해 주는 프로그램이다.
+
+편리한 대신 function내에 파라메터들이 많아서 오류를 찾기가 힘들고 적절한 예제가 잘 없다...
+
+다음 예제 프로그램 에서도 gt_zco06이 따로 선언되어야 하고, 가져오는 테이블도 만들어져 있는 테이블이고,
+function도 예제를 위한 커스텀 function이라 다른 테이블은 불러오지를 못한다..
+
+```abap
+form run_bapi .
+
+  tables : zco01.
+
+  data: l_except(1) type c.
+
+  data: gt_zco06 like table of zco01 with header line.
+
+  data : l_index(10) type c.
+
+
+  loop at gt_itab into gs_itab.
+
+  l_index = gs_itab-kstar.
+
+  call function 'CONVERSION_EXIT_ALPHA_INPUT'
+    exporting
+      input         = l_index
+   importing
+      output        = l_index.
+          .
+
+  gt_zco06-kstar = l_index.        " 계정코드
+  gt_zco06-wog05 = gs_itab-wog05.  " 금액
+
+  append gt_zco06.
+
+  call function 'ZINTERN_BUDGET'
+    exporting
+      m_gjahr  = gs_itab-gjahr    " 연도
+      m_perbl  = gs_itab-perbl    " 월
+      m_kostl  = gs_itab-kostl    " 코스트센터
+    importing
+      e_except = l_except
+    tables
+      zco06    = gt_zco06.
+
+  clear : gt_zco06, gt_zco06[].
+
+  endloop.
+
+endform.                    " RUN_BAPI
+```
+
+물론 이 프로그램 이전에 엑셀에서 값을 읽어오기 위한 get data 와 read data가 필요하다.
+
+```abap
+form get_data_section.
+
+  call function 'KCD_EXCEL_OLE_TO_INT_CONVERT'
+    exporting
+      filename    = p_file
+      i_begin_col = 1
+      i_begin_row = 1
+      i_end_col   = 10
+      i_end_row   = 5000
+    tables
+      intern      = g_xls_t.
+
+  perform read_item_data.
+
+endform.                    " GET_DATA_SECTION
+```
+
+```abap
+form read_item_data.
+
+  data: w_cnt  type i,
+        w_row   like g_xls_t-row,
+        w_col1  like g_xls_t-col, w_col2  like g_xls_t-col,
+        w_col3  like g_xls_t-col, w_col4  like g_xls_t-col,
+        w_col5  like g_xls_t-col. "W_COL6  LIKE G_XLS_T-COL.
+*        W_COL7  LIKE G_XLS_T-COL, W_COL8  LIKE G_XLS_T-COL,
+*        W_COL9  LIKE G_XLS_T-COL, W_COL10  LIKE G_XLS_T-COL.
+
+
+  w_row = g_xls_t-row.                 " Header값, 총 row 수
+
+  loop at g_xls_t.
+    w_col1  =  g_xls_t-col.
+    w_col2  =  w_col1 + 1.
+    w_col3  =  w_col2 + 1.
+    w_col4  =  w_col3 + 1.
+    w_col5  =  w_col4 + 1.
+*    W_COL6  =  W_COL5 + 1.
+*    W_COL7  =  W_COL6 + 1.
+*    W_COL8  =  W_COL7 + 1.
+*    W_COL9  =  W_COL8 + 1.
+*    W_COL10  =  W_COL9 + 1.
+
+    w_cnt = g_xls_t-row + 1.           "처음 텍스트를 제외하기 위해서
+    g_cnt = w_row - g_xls_t-row.       "실데이타가 들어있는 시작 row
+    "AT FIRST 기능
+    exit.
+  endloop.
+
+  g_start_row = w_cnt.                 "탭제외
+
+  clear : gt_itab[].
+
+  do g_cnt times.
+
+    perform convert_excel_data :
+
+    tables g_xls_t using g_start_row w_col1  gs_itab-gjahr,
+    tables g_xls_t using g_start_row w_col2  gs_itab-perbl,
+    tables g_xls_t using g_start_row w_col3  gs_itab-kostl,
+    tables g_xls_t using g_start_row w_col4  gs_itab-kstar,
+    tables g_xls_t using g_start_row w_col5  gs_itab-wog05.
+*    TABLES G_XLS_T USING G_START_ROW W_COL6  GS_ITAB-scope.
+*    TABLES G_XLS_T USING G_START_ROW W_COL7  GS_ITAB-KOSAR,
+*    TABLES G_XLS_T USING G_START_ROW W_COL8  GS_ITAB-KHINR,
+*    TABLES G_XLS_T USING G_START_ROW W_COL9  GS_ITAB-BUKRS,
+*    TABLES G_XLS_T USING G_START_ROW W_COL10 GS_ITAB-GSBER.
+    add  1  to g_start_row.
+
+    append gs_itab to gt_itab.  clear  gs_itab.
+
+  enddo.
+
+endform.                    " READ_ITEM_DATA
 ```
