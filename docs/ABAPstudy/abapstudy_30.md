@@ -197,7 +197,7 @@ endform.                    " HANDLE_USER_COMMAND
 
 편리한 대신 function내에 파라메터들이 많아서 오류를 찾기가 힘들고 적절한 예제가 잘 없다...
 
-## BAPI 
+## BAPI 예시
 
 다음 예제 프로그램 에서도 gt_zco06이 따로 선언되어야 하고, 가져오는 테이블도 만들어져 있는 테이블이고,
 function도 예제를 위한 커스텀 function이라 다른 테이블은 불러오지를 못한다..
