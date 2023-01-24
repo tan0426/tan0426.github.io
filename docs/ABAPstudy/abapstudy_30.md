@@ -73,6 +73,8 @@ TYPES : GTY_BDC TYPE BDCDATA,
 ### run BDC
 
 선언 해 준 인터널 테이블, 불러 올 엑셀 의 필드 순서와 갯수를 같게 해 주어야 한다.
+
+그리고 해당 트랜잭션에 레고드가 저장 되어 있어야 한다.
 ```abap
 form run_bdc .
   tables : zco01.
