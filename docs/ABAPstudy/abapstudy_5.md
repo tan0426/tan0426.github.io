@@ -76,3 +76,5 @@ HIGH TYPE 참조한 대상 변수와 같은 유형.
 
 ![Untitled](./abapstudy_img/abapstudy_5.png)
 ![Untitled](./abapstudy_img/abapstudy_6.png)
+
+EX) RANGES의 필드 값들을 매크로를 이용하여 집어 넣을 수도 있다.
