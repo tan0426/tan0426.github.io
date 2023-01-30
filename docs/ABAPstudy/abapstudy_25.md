@@ -209,4 +209,4 @@ FORM INIT_LAYOUT_0100 .
 ENDFORM.                    " INIT_LAYOUT_0100
 ```
 
-![image](./abapstudy_img/abapstudy_45.png)
+![image](./abapstudy_img/abapstudy_45.)
