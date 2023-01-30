@@ -179,7 +179,7 @@ CALL METHOD GO_1->M1. "메소드 호출
 이때 START-OF-SELECTION은 데이터 선언와 구분짓기 위한 것으로, 구분 지을 수 있는 부분이면 어떤것이든 상관없는 듯 하다.
 
 ## 사용 예제 2
-1. ALV에서 DOUBLE CLICK 예제
+### ALV에서 DOUBLE CLICK 예제
 
 ```abap
 CLASS EVENT DEFINITION.
@@ -230,3 +230,199 @@ ENDFORM.
 
 CL_GUI_ALV_GRID 클래스에서 DOUBLECLICK EVENTS를 참조하여 METHOD를 만들고 이를 이용.
 
+## 사용예제 3 
+### TOP OF PAGE 사용 예제
+
+DEFINITION
+
+```abap
+class lcl_event_receiver definition.
+
+  public section.
+    methods:
+      handle_top_of_page for event top_of_page of cl_gui_alv_grid
+        importing e_dyndoc_id table_index.
+  private section.
+
+endclass. "LCL_EVENT_RECEIVER DEFINITION
+```
+
+IMPLEMENTATION
+
+```abap
+  method handle_top_of_page.
+    perform event_top_of_page using e_dyndoc_id
+                                    table_index.
+  endmethod.
+
+endclass. "LCL_EVENT_RECEIVER IMPLEMENTATION
+```
+
+띄워 줄 내용을 설정.
+
+```abap
+&---------------------------------------------------------------------*
+*&      Form  EVENT_TOP_OF_PAGE
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_E_DYNDOC_ID  text
+*      -->P_TABLE_INDEX  text
+*----------------------------------------------------------------------*
+FORM EVENT_TOP_OF_PAGE  USING P_DYNDOC_ID  TYPE REF TO CL_DD_DOCUMENT
+                              P_TABLE_INDEX TYPE SYINDEX.
+  DATA : LV_TEXT TYPE CHAR255.
+  DATA : LV_TEXT2 TYPE CHAR255.
+  DATA : LV_TEXT3 TYPE CHAR255.
+  DATA : LV_TEXT4 TYPE CHAR255.
+  DATA : LV_TEXT5 TYPE CHAR255.
+
+  CALL METHOD P_DYNDOC_ID->INITIALIZE_DOCUMENT( ).
+
+  CLEAR : LV_TEXT, LV_TEXT2, LV_TEXT3, LV_TEXT4, LV_TEXT5.
+  CONDENSE LV_TEXT NO-GAPS.
+
+  CONCATENATE '회사 코드 : ' P_BUKRS INTO LV_TEXT SEPARATED BY SPACE.
+  IF S_AEDAT IS NOT INITIAL.
+    CASE S_AEDAT-OPTION.
+      WHEN 'EQ'.
+        CONCATENATE '레코드 생성일 : '  S_AEDAT-LOW+0(4) '년' S_AEDAT-LOW+4(2) '월'
+                                        S_AEDAT-LOW+6(2) '일' INTO LV_TEXT2.
+      WHEN 'BT'.
+        IF S_AEDAT-LOW IS NOT INITIAL.
+          CONCATENATE '레코드 생성일 : ' S_AEDAT-LOW+0(4) '년' S_AEDAT-LOW+4(2) '월'
+                                        S_AEDAT-LOW+6(2) '일' ' ~ '
+                                        S_AEDAT-HIGH+0(4) '년' S_AEDAT-HIGH+4(2) '월'
+                                        S_AEDAT-HIGH+6(2) '일' INTO LV_TEXT2.
+        ELSE.
+          CONCATENATE '레코드 생성일 : ' ' ~ '
+                      S_AEDAT-HIGH+0(4) '년' S_AEDAT-HIGH+4(2) '월'
+                      S_AEDAT-HIGH+6(2) '일' INTO LV_TEXT2.
+        ENDIF.
+
+      WHEN OTHERS.
+    ENDCASE.
+  ELSE.
+    LV_TEXT2 = '레코드 생성일 : -'.
+  ENDIF.
+  IF S_WERKS IS NOT INITIAL.
+
+    CASE S_WERKS-OPTION.
+      WHEN 'EQ'.
+        CONCATENATE '플랜트 : '  S_WERKS-LOW INTO LV_TEXT3.
+      WHEN 'BT'.
+        IF S_WERKS-LOW IS NOT INITIAL.
+          CONCATENATE '플랜트 : ' S_WERKS-LOW ' ~ '
+                                S_WERKS-HIGH INTO LV_TEXT3.
+        ELSE.
+          CONCATENATE '플랜트 : ' ' ~ '
+                      S_WERKS-HIGH INTO LV_TEXT3.
+        ENDIF.
+
+      WHEN OTHERS.
+    ENDCASE.
+  ELSE.
+    LV_TEXT3 = '플랜트 : -'.
+  ENDIF.
+  IF S_LGORT IS NOT INITIAL.
+
+    CASE S_LGORT-OPTION.
+      WHEN 'EQ'.
+        CONCATENATE '저장 위치 : '  S_LGORT-LOW INTO LV_TEXT4.
+      WHEN 'BT'.
+        IF S_LGORT-LOW IS NOT INITIAL.
+          CONCATENATE '저장 위치 : ' S_LGORT-LOW ' ~ '
+                                S_LGORT-HIGH INTO LV_TEXT4.
+        ELSE.
+          CONCATENATE '저장 위치 : ' ' ~ '
+                      S_LGORT-HIGH INTO LV_TEXT4.
+        ENDIF.
+
+      WHEN OTHERS.
+
+    ENDCASE.
+
+  ELSE.
+    LV_TEXT4 = '저장 위치 : -'.
+  ENDIF.
+  IF S_MATNR IS NOT INITIAL.
+
+    CASE S_MATNR-OPTION.
+      WHEN 'EQ'.
+        CONCATENATE '자재 : '  S_MATNR-LOW INTO LV_TEXT5.
+      WHEN 'BT'.
+        IF S_MATNR-LOW IS NOT INITIAL.
+          CONCATENATE '자재 : ' S_MATNR-LOW ' ~ '
+                                S_MATNR-HIGH INTO LV_TEXT5.
+        ELSE.
+          CONCATENATE '자재 : ' ' ~ '
+                      S_MATNR-HIGH INTO LV_TEXT5.
+        ENDIF.
+
+      WHEN OTHERS.
+
+    ENDCASE.
+  ELSE.
+    LV_TEXT5 = '자재 : -'.
+  ENDIF.
+
+  "문구 추가
+  CALL METHOD P_DYNDOC_ID->ADD_TEXT
+    EXPORTING
+      TEXT          = LV_TEXT
+      SAP_FONTSTYLE = P_DYNDOC_ID->LARGE    " 폰트 사이즈 좁게
+      SAP_EMPHASIS  = P_DYNDOC_ID->STRONG.  " 굵게
+
+  "현재 커서라인에서 줄바꿈
+  CALL METHOD P_DYNDOC_ID->NEW_LINE.
+
+  CALL METHOD P_DYNDOC_ID->ADD_TEXT
+    EXPORTING
+      TEXT          = LV_TEXT2
+      SAP_FONTSTYLE = P_DYNDOC_ID->LARGE    " 폰트 사이즈 좁게
+      SAP_EMPHASIS  = P_DYNDOC_ID->STRONG.  " 굵게
+
+  CALL METHOD P_DYNDOC_ID->NEW_LINE.
+
+  CALL METHOD P_DYNDOC_ID->ADD_TEXT
+    EXPORTING
+      TEXT          = LV_TEXT3
+      SAP_FONTSTYLE = P_DYNDOC_ID->LARGE    " 폰트 사이즈 좁게
+      SAP_EMPHASIS  = P_DYNDOC_ID->STRONG.  " 굵게
+
+  CALL METHOD P_DYNDOC_ID->NEW_LINE.
+
+  CALL METHOD P_DYNDOC_ID->ADD_TEXT
+    EXPORTING
+      TEXT          = LV_TEXT4
+      SAP_FONTSTYLE = P_DYNDOC_ID->LARGE    " 폰트 사이즈 좁게
+      SAP_EMPHASIS  = P_DYNDOC_ID->STRONG.  " 굵게
+
+  CALL METHOD P_DYNDOC_ID->NEW_LINE.
+
+  CALL METHOD P_DYNDOC_ID->ADD_TEXT
+    EXPORTING
+      TEXT          = LV_TEXT5
+      SAP_FONTSTYLE = P_DYNDOC_ID->LARGE    " 폰트 사이즈 좁게
+      SAP_EMPHASIS  = P_DYNDOC_ID->STRONG.  " 굵게
+
+*-- 출력
+  CALL METHOD P_DYNDOC_ID->DISPLAY_DOCUMENT
+    EXPORTING
+      PARENT        = GR_HEAD_CONTAINER "1번쨰 컨테이너와 연결
+      REUSE_CONTROL = 'X'.   " TOP페이지 화면 값이 액션에 따라 변경
+ENDFORM.                    " EVENT_TOP_OF_PAGE
+```
+
+그리고 HANDLE과 CALL METHOD를 선언해 준다.
+
+```abap
+DATA : GV_DOCUMENT TYPE REF TO CL_DD_DOCUMENT.
+CREATE OBJECT GV_DOCUMENT.
+SET HANDLER GO_EVENT_RECEIVER->HANDLE_TOP_OF_PAGE FOR GR_GRID1.
+
+CALL METHOD GR_GRID1->LIST_PROCESSING_EVENTS
+  EXPORTING
+    I_EVENT_NAME = 'TOP_OF_PAGE'
+    I_DYNDOC_ID  = GV_DOCUMENT.
+```
