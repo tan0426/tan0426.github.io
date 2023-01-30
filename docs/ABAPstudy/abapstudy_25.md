@@ -209,4 +209,54 @@ FORM INIT_LAYOUT_0100 .
 ENDFORM.                    " INIT_LAYOUT_0100
 ```
 
+이렇게 한 LAYOUT으로 조절 할 수도 있지만, GRID가 3개면 LAYOUT도 3개, GRID REFRESH에서 GS_LAYOUT도 모두 지정해 준다.
+
+```abap
+*&---------------------------------------------------------------------*
+*&      Module  ALV_INIT_DISPLAY_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE ALV_INIT_DISPLAY_0100 OUTPUT.
+  "-- 화면의  GRID가 BOUND되었는지 확인한다.
+  IF GR_DOCK1 IS INITIAL.
+
+    "-- GRID의 INSTANCE를 생성한다.
+    PERFORM CREATE_INSTANCE_0100.
+
+    "-- GRID의 LAYOUT 속성을 정의한다.
+    PERFORM INIT_LAYOUT_0100.
+    PERFORM INIT_LAYOUT2_0100.
+    PERFORM INIT_LAYOUT3_0100.
+
+    "-- ALV Standard toolbar button cotrol
+*    PERFORM SET_GRID_EXCLUDE_0100.
+
+    "-- ALV Sort
+*    perform alv_sort_0100.
+
+    "-- Field Attribute을 사용자의 요구사항에 맞게 변경
+    PERFORM APPEND_FIELDCAT_0100.
+
+    "-- ALV Events 등록
+    PERFORM REGIST_ALV_EVENT_0100.
+
+    PERFORM DROPDOWN_LIST.
+
+    "-- ALV Display
+    PERFORM DISPLAY_ALV_GRID_0100.
+*
+**    "-- ALV Title
+*    *    PERFORM DISPLAY_ALV_TITLE_0100.
+
+  ELSE.
+
+    PERFORM REFRESH_GRID_0100.
+    PERFORM REFRESH_GRID2_0100.
+    PERFORM REFRESH_GRID3_0100.
+
+  ENDIF.
+ENDMODULE.                 " ALV_INIT_DISPLAY_0100  OUTPUT
+```
+
 ![image](./abapstudy_img/abapstudy_45.PNG)
