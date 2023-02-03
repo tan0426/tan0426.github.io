@@ -1,22 +1,16 @@
 ---
 layout: default
-title: 11. 모듈풀 학습
+title: 11. MODULE POOL, TABSTRIP
 parent: abapstudy
 nav_order: 11
 ---
-# 11. 모듈풀 학습
+# 11. MODULE POOL
 
-ANDROID STUDIO로 모바일 어플리케이션 개발 공부 할때는 화면을 HTML로 구성하고,
+모듈풀 이란 module이 있는 pool로, 하나의 공간에 로직을 묶어두는 개념이다. 그래서 일반 레포트 프로그램과는 달리 trigger가 없으면 실행이 되지 않는다.
 
-버튼의 기능 등등을 자바로 따로 코딩을 해서 구성을 했었는데, 아밥에서도 비슷한 방식으로 진행하는 것 같다.
+모듈풀의 네이밍 룰은 SAPMZ... 이다.
 
-다만 그 개념에 대해 깊이 있게 책을 읽어본다던지 한 것은 아니지만, 약간 개념이 다른것 같아 혼동되는 점이 있어 그 부분을 확실하게 공부 할 필요가 있는 것 같다.
-
-아밥의 화면 구성은 다음과 같다. 다음과 같은 구분을 적어줘야 적절하게 화면에 실행 되므로 꼭 적어주는게 좋다.
-
-(INITIOALIZATION과 START OF SELECTION을 적지 않고 적으니 구분이 안되서 그런지 화면이 안떴다 ㅋ)
-
-# 1. 스크린을 생성하지 않은 화면 구성법
+## 1. 스크린을 생성하지 않은 화면 구성법
 1-1. 데이터 선언
 
 1-2. INITIALIZATION
@@ -95,8 +89,8 @@ AT USER-COMMAND.
 ```
 이 부분에 USER-COMMAND를 이용하여 화면이 뜬 후 생성할 버튼의 기능을 설정 할 수 있다.
 
-# 2. 모듈풀 화면 구성
-# PBO, PAI
+## 2. 모듈풀 화면 구성
+## PBO, PAI
 
 
 ```abap
@@ -164,3 +158,135 @@ MODULE user_command_0100 INPUT.
 ENDMODULE.
 ```
 스크린 띄운 후 버튼을 누를 경우 정보가 뜨는 행위를 이와같이 SELECT하여 나타 낼 수 있다.
+
+# TAB STRIP
+
+탭 스트립이란 탭 별로 다른 컨텐츠를 보여주기 위한 도구의 개념이다.
+
+## TAB STRIP 예시
+
+### MAIN PROGRAM
+
+우선 TOP INCLUE를 함께하여 모듈풀을 생성한다. 그렇게 되면 TOP INCLUDE 안에 프로그램이 선언되는 형태로 생성 된다.
+
+```abap
+*&---------------------------------------------------------------------*
+*& 모듈풀               SAPMZ2302_01
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+ INCLUDE MZ2302_01TOP                            .    " global Data
+ INCLUDE MZ2302_01O01                            .  " PBO-Modules
+ INCLUDE MZ2302_01I01                            .  " PAI-Modules
+ INCLUDE MZ2302_01F01                            .  " FORM-Routines
+```
+
+그리고 데이터를 검색 할 100번 화면을 생성한다.
+
+## 100번 스크린
+
+![image](./abapstudy_img/abapstudy_46.PNG)
+
+레이아웃에 검색 할 칸들을 설정한다. 이때 SELECT OPTIONS와 같은 기능을 가지는 INPUT칸을 만들기 위해서는 다음에서 보이는 프로그램에서 얻기를 클릭하여 RANGES로 선언 해 준 변수를 찾아준다.
+
+![image](./abapstudy_img/abapstudy_47.PNG)
+
+```abap
+*&---------------------------------------------------------------------*
+*&  Include           MZ2302_01I01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  USER_COMMAND_0100  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE USER_COMMAND_0100 INPUT.
+
+  GV_TAB-TABLENAME = 'EKKO'.
+  GV_TAB-FIELDNAME = 'AEDAT'.
+
+  CASE OK_CODE.
+    WHEN 'BTS'.
+
+      CALL FUNCTION 'COMPLEX_SELECTIONS_DIALOG'
+        EXPORTING
+          TITLE             = 'RANGE 버튼'
+          TAB_AND_FIELD     = GV_TAB
+        TABLES
+          RANGE             = LV_AEDAT
+        EXCEPTIONS
+          NO_RANGE_TAB      = 1
+          CANCELLED         = 2
+          INTERNAL_ERROR    = 3
+          INVALID_FIELDNAME = 4
+          OTHERS            = 5.
+      IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+      ENDIF.
+
+    WHEN 'GO'.
+      PERFORM SELECT_DATA.
+      CALL SCREEN 200.
+    WHEN 'BACK' OR 'CANC'.
+      LEAVE TO SCREEN 0.
+    WHEN 'EXIT'.
+      LEAVE PROGRAM.
+    WHEN OTHERS.
+  ENDCASE.
+ENDMODULE.                 " USER_COMMAND_0100  INPUT
+```
+
+USER-COMMAND에는 이와같이 SELECT OPTIONS 옆의 버튼이 검색 창을 띄울 수 있도록 COMPLEX_SELECTIONS_DIALOG FUNCTION을 사용 해 준다.
+
+실행버튼은 'GO' 버튼은, 이 버튼을 클릭하면 데이터를 SELECT 하여 200번 스크린을 호출 하도록 한다.
+
+## 200번 스크린
+
+![image](./abapstudy_img/abapstudy_48.PNG)
+
+TAB1, TAB2 탭을 만들고, 각 탭 안에 SUB SCREEN TAB1_SCR1을 넣어준다. 이 서브 스크린은 한개만 만들어서 두 탭에 모두 적용시켜 준다.
+
+![image](./abapstudy_img/abapstudy_49.PNG)
+
+```abap
+PROCESS BEFORE OUTPUT.
+ MODULE STATUS_0200.
+ MODULE SET_INIT.
+ MODULE ALV_DISPLAY.
+
+ CALL SUBSCREEN TAB1_SCR1 INCLUDING SY-REPID GV_DYNNR.
+
+PROCESS AFTER INPUT.
+ CALL SUBSCREEN TAB1_SCR1.
+ MODULE USER_COMMAND_0200.
+```
+
+우선 SUBSCREEN을 PBO에서 현재 프로그램과 스크린을 지정해주어 불러오고, PAI에서도 불러준다.
+
+여기서 GV_DYNNR은 서브스크린으로 쓸 스크린을 만들고 200 스크린의 PBO에 지정해 주면 된다. 이때 서브 스크린은 서브화면으로 생성해야 한다. OK CODE는 생성하지 않는다.
+
+![image](./abapstudy_img/abapstudy_50.PNG)
+
+
+```abap
+*&---------------------------------------------------------------------*
+*&      Module  SET_INIT  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE SET_INIT OUTPUT.
+  IF GV_CHECK IS INITIAL.
+    TABSTRIP-ACTIVETAB = 'TAB1'.
+    GV_DYNNR = '0210'.
+    GV_CHECK = 'X'.
+  ENDIF.
+ENDMODULE.                 " SET_INIT  OUTPUT
+```
+
+TAB1이든 TAB2든 클릭하면 다시 스크린 200의 PBO를 타기때문에 GV_CHECK를 해주어 한번 TAB1의 스크린을 띄웠으면 다시 타지 않도록 한다.
+
+
+그리고 서브 스크린 210의 PBO에 서브스크린에 띄울 ALV를 뿌려준다.
