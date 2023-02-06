@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 1. overview
-parent: co_study
+parent: CO_study
 nav_order: 1
 ---
 
