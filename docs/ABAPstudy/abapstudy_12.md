@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 12. CLASS 학습
+title: 12. CLASS
 parent: abapstudy
 nav_order: 12
 ---
-# 12. CLASS 학습
+# 12. CLASS
 
 ### Global Class
 T-CODE : SE24에서 생성/조회/수정이 가능한 클래스
@@ -107,6 +107,10 @@ STATIC METHOD
 - CLASS-METHODS를 사용하여 STATIC 메서드을 선언하여 STATIC으로 선언된 STATIC 속성, STATIC 이벤트를 호출 할 수 있음.
 
 ### class에서 불러올때 작대기 규칙
+- 종속관계 structure등의 하위 오브젝트 등을 표시 할 때
+
+~ open sql에서 조인 테이블과 필드의 관계를 표시 할 떄
+
 -> 클래스의 특정 메소드를 불러올 때
 
 => 클래스의 특정 요소를 불러올 때
