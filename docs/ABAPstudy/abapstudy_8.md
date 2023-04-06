@@ -1,10 +1,12 @@
 ---
 layout: default
-title: 8. SELECT-OPTIONS에 SEARCH HELP 넣기
+title: 8. SELECT-OPTIONS
 parent: abapstudy
 nav_order: 8
 ---
-# 8. SELECT-OPTIONS에 SEARCH HELP 넣기
+# 8. SELECT-OPTIONS
+
+## SELECT OPTIONS에 SEARCH HELP 달기
 
 ```abap
 AT SELECTION-SCREEN ON VALUE-REQUEST FOR S_ZEMPNO-LOW.
@@ -71,3 +73,16 @@ ENDFORM.
 DDSHRETVAL는 서치헬프로 띄우는 전형적인 형식의 테이블 인것같다.
 
 그래서 리턴 받는 테이블(LT_RETURN)은 이 테이블(DDSHRETVAL)을 참고하는 것 같다.
+
+## SELECT-OPTIONS 상위 TITLE (1000 SCREEN) 바꾸기
+
+### 1. PROGRAM CODE 로 TITLE 제어
+
+```abap
+INITIALIZATION
+  SY-TITLE = 'TITLE TEST'
+```
+
+### 2. 속성 이용
+
+ABAP 편집기의 툴바 [이동->속성] 에서 설정.
