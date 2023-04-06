@@ -1,10 +1,17 @@
 ---
 layout: default
-title: 3. message type
+title: 3. message
 parent: abapstudy
 nav_order: 3
 ---
-# 3. message type
+# 1. 호출 MESSAGE TYPE
+되도록이면 STANDARD MESSAGE를 찾아서 사용하면 좋은데,
+T-CODE SE91에서 MESSAGE ID를 등록 한 후 사용하면 된다.
+
+```abap
+REPORT ZTEST MESSAGE-ID ZDG0406.
+```
+## 2. message type
            
 ![Untitled](./abapstudy_img/abapstudy_4.png)
 
