@@ -6,6 +6,46 @@ nav_order: 8
 ---
 # 8. SELECT-OPTIONS
 
+## 찾아 볼 SELECT-OPTIONS 문법
+
+### 1. DEFAULT
+미리 값을 넣어 둔다.
+```abap
+SELECT-OPTIONS S_TEST FOR TEST DEFAULT 'TEST'.
+```
+
+### 2. MEMORY ID
+SPA/GPA에 저장한다고 하는데, 공부가 더 필요하다.
+```abap
+SELECT-OPTIONS S_TEST FOR TEST MEMORY ID.
+```
+
+### 3. LOWER CASE
+입력받은 문자를 소문자로 변환해서 사용한다.
+
+```abap
+SELECT-OPTIONS S_TEST FOR TEST LOWER CASE.
+```
+
+### 4. OBLIGATORY
+필수값으로 지정.
+
+```abap
+SELECT-OPTIONS S_TEST FOR TEST OBLIGATORY.
+```
+
+### 5. NO-EXTENSION
+추가화면 (오른쪽에 추가조건 입력 할 수 있는 버튼)을 사용 할 수 없게 한다.
+
+```abap
+SELECT-OPTIONS S_TEST FOR TEST NO-EXTENSION.
+```
+### 6. NO-INTERVALS
+HIGH값을 입력할 수 없다. 추가화면은 사용 할 수 있다.
+
+```abap
+SELECT-OPTIONS S_TEST FOR TEST NO-INTERVALS.
+```
 ## SELECT OPTIONS에 SEARCH HELP 달기
 
 ```abap
