@@ -4,7 +4,9 @@ title: 9. AT SELECTION-SCREEN으로 조건달기
 parent: abapstudy
 nav_order: 9
 ---
-# 9. AT SELECTION-SCREEN으로 조건달기
+# 9. AT SELECTION-SCREEN 으로 조건달기
+
+## SELECT OPTIONS에 조건달기
 
 ```abap
 AT SELECTION-SCREEN ON S_ZSDATE.
@@ -14,11 +16,16 @@ AT SELECTION-SCREEN ON S_ZSDATE.
 ```
 값 미입력시 에러발생
 
+## 체크박스(CHECK BOX)로 조건달기
+
 ```abap
 SELECT-OPTIONS : S_ZEMPNM FOR ZDSUWONT02-ZEMPNM MODIF ID ID1,
                  S_ZGEN FOR ZDSUWONT02-ZGENDER MODIF ID ID1. "8자리 이하로 선언해줘어야 함
 PARAMETERS : P_CHK AS CHECKBOX USER-COMMAND CHK1.
 ```
+
+지정한 ID값에 따른 로직은 AT SELECTION-SCREEN OUTPUT 아래에 두어야 실행된다.
+그냥 AT SELECTION-SCREEN에 두면 실행이 되지 않는다.
 
 ```abap
 AT SELECTION-SCREEN OUTPUT.
