@@ -6,7 +6,7 @@ nav_order: 25
 ---
 # 25. 찾아 볼 ALV LAYOUT, STYLE
             
-## 특정 조건에 EDIT ENABLE, DISABLE 예시1.
+## 1. 특정 조건에 EDIT ENABLE, DISABLE 예시1.
 
 ```abap
 *&---------------------------------------------------------------------*
@@ -81,7 +81,7 @@ ENDFORM.
 
 ![Untitled](./abapstudy_img/abapstudy_28.PNG)
 
-## 특정 조건에 EDIT ENABLE, DISABLE 예시2.
+## 1. 특정 조건에 EDIT ENABLE, DISABLE 예시2.
 
 우선 DISABLED STYLE PERFROM 문을 만들어 준다.
 
@@ -260,3 +260,82 @@ ENDMODULE.                 " ALV_INIT_DISPLAY_0100  OUTPUT
 ```
 
 ![image](./abapstudy_img/abapstudy_45.PNG)
+
+## 2. ALV ROW COLOR
+
+1. TOP에 COLOR 필드 추가
+
+```abap
+DATA : BEGIN OF GS_DISPLAY3,
+        FLDATE TYPE SFLIGHT-FLDATE,
+        ZCODE TYPE ZTCOTJ_01-ZCODE,
+        PLANETYPE TYPE SFLIGHT-PLANETYPE,
+        PAYMENTSUM TYPE SFLIGHT-PAYMENTSUM,
+        ZMAX_SUM TYPE SFLIGHT-SEATSMAX,
+        ZPER_SUM TYPE SFLIGHT-SEATSOCC,
+        ZPRICE TYPE SFLIGHT-PAYMENTSUM,
+        FLTIME TYPE SPFLI-FLTIME,
+        CURRENCY TYPE SFLIGHT-CURRENCY,
+        COLOR(4),
+       END OF GS_DISPLAY3,
+       GT_DISPLAY3 LIKE TABLE OF GS_DISPLAY3.
+```
+
+2. 로직에 색상 입력
+
+```abap
+LOOP AT GT_DATA3 INTO GS_DATA3 WHERE FLDATE IN S_FLDAT AND ZCODE IN S_ZCODE.
+    GS_DATA3-ZMAX_SUM = GS_DATA3-SEATSMAX + GS_DATA3-SEATSMAX_B + GS_DATA3-SEATSMAX_F.
+    GS_DATA3-ZPER_SUM = GS_DATA3-SEATSOCC + GS_DATA3-SEATSOCC_B + GS_DATA3-SEATSOCC_F.
+    GS_DATA3-ZPRICE = GS_DATA3-PAYMENTSUM / GS_DATA3-ZPER_SUM.
+
+    MOVE-CORRESPONDING GS_DATA3 TO GS_DISPLAY3.
+    IF GS_DISPLAY3-ZMAX_SUM = GS_DISPLAY3-ZPER_SUM.
+      GS_DISPLAY3-COLOR = 'C600'.
+    ENDIF.
+    APPEND GS_DISPLAY3 TO GT_DISPLAY3.
+    CLEAR GS_DISPLAY3.
+ENDLOOP.
+```
+
+3. LAYOUT STRUCTURE 입력
+
+```abap
+GS_LAYOUT-INFO_FNAME = 'COLOR'.
+```
+
+4. SET_TABLE_FOR_FIRST_DISPLAY에 GS_LAYOUT 등록
+
+```abap
+  CALL METHOD GO_GRID3->SET_TABLE_FOR_FIRST_DISPLAY
+    EXPORTING
+*      I_BUFFER_ACTIVE               = I_BUFFER_ACTIVE
+*      I_BYPASSING_BUFFER            = I_BYPASSING_BUFFER
+*      I_CONSISTENCY_CHECK           = I_CONSISTENCY_CHECK
+*      I_STRUCTURE_NAME              = I_STRUCTURE_NAME
+*      IS_VARIANT                    = IS_VARIANT
+*      I_SAVE                        = I_SAVE
+*      I_DEFAULT                     = 'X'
+      IS_LAYOUT                     = GS_LAYOUT
+*      IS_PRINT                      = IS_PRINT
+*      IT_SPECIAL_GROUPS             = IT_SPECIAL_GROUPS
+*      IT_TOOLBAR_EXCLUDING          = IT_TOOLBAR_EXCLUDING
+*      IT_HYPERLINK                  = IT_HYPERLINK
+*      IT_ALV_GRAPHICS               = IT_ALV_GRAPHICS
+*      IT_EXCEPT_QINFO               = IT_EXCEPT_QINFO
+*      IR_SALV_ADAPTER               = IR_SALV_ADAPTER
+    CHANGING
+      IT_OUTTAB                     = GT_DISPLAY3
+      IT_FIELDCATALOG               = GT_FCAT3
+*      IT_SORT                       = IT_SORT
+*      IT_FILTER                     = IT_FILTER
+*    EXCEPTIONS
+*      INVALID_PARAMETER_COMBINATION = 1
+*      PROGRAM_ERROR                 = 2
+*      TOO_MANY_LINES                = 3
+*      OTHERS                        = 4
+          .
+```
+
+### 색상 표
+![image](./abapstudy_img/abapstudy_53.png)
