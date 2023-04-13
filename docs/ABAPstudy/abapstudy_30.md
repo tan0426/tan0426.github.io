@@ -4,7 +4,7 @@ title: 30. BDC, BAPI, 엑셀
 parent: abapstudy
 nav_order: 30
 ---
-
+# 30. BDC, BAPI, 엑셀
 # BDC (Batch Data Communication)
 BDC는 사용자가 Macro를 사용하여 SAP프로그램을 자동으로 수행하는 것과 같은 형태의 기능과 유사.
 
@@ -108,6 +108,8 @@ form run_bdc .
 
 endform.                    " EXECUTE_BDC
 ```
+# EXCEL DOWNLOAD, UPLOAD
+## EXCEL DOWNLOAD
 
 엑셀 다운로드 버튼 USER-COMMAND.
 
@@ -115,80 +117,78 @@ endform.                    " EXECUTE_BDC
 
 ![image](./abapstudy_img/abapstudy_44.png)
 
+먼저 저장된 엑셀 양식을 불러온다.
+
 ```abap
-form user_command . " Excel Form 다운로드
+FORM GET_WWWDATA .
+  SELECT SINGLE *
+    INTO CORRESPONDING FIELDS OF WWWDATA_ITEM
+    FROM WWWDATA
+    WHERE OBJID = 'ZCOTJ_TEST_01'.
+ENDFORM.                    " GET_WWWDATA
+```
 
-  data:    l_file  type rlgrap-filename ,
-           l_name  type string ,
-           wwwdata_item like wwwdatatab .
+그 다음 BROWSE 창을 생성 한 후 컴퓨터에 다운받는 메세지를 호출하여 저장한다.
 
-  clear : wwwdata_item.
-  select single *
-    into corresponding fields of wwwdata_item
-    from wwwdata
-    where objid = 'ZINTERN02_01' . "SMW0에 저장해 둔 엑셀 양식을 불러옴.
+```abap
+FORM DOWNLOAD_FILE USING P_FILENAME TYPE STRING.
+  DATA : TITLE TYPE STRING,
+         FILENAME TYPE STRING,
+         PATH TYPE STRING,
+         FULLPATH TYPE STRING,
+         USER_ACTION TYPE I.
 
-  data: l_filename     type string,
-               table             type string_table,
-               title               type string,
-               fullpath         type string,
-               filename       type string,
-               path             type string,
-              action           type i.
+  DATA : L_FILE  TYPE RLGRAP-FILENAME.
 
-  """""""""""""다운로드 엑셀 형식. 타이틀, 저장 위치 등
-  title = '투자오더 Excel Layout.XLS' .
-  l_filename = '투자오더 Excel Layout.XLS' .
+  "1. EXCEL DOWNLOAD BROWSE 창 생성
+  TITLE = TEXT-T02.
 
-  call method cl_gui_frontend_services=>file_save_dialog
-    exporting
-      window_title      = title
-      default_extension = 'xls'
-      default_file_name = l_filename
-      file_filter       = 'Only Excel Files (*.xls)|*.XLS|'
-      initial_directory = 'C:\'
-    changing
-      fullpath          = fullpath
-      filename          = filename
-      path              = path
-      user_action       = action.
-  if sy-subrc <> 0.
-    message id sy-msgid type sy-msgty number sy-msgno
-               with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
-  endif.
-  p_file = fullpath  .
-  """"""""""""""""""""""""""""""""""
+  CALL METHOD CL_GUI_FRONTEND_SERVICES=>FILE_SAVE_DIALOG
+    EXPORTING
+      WINDOW_TITLE         = TITLE
+      DEFAULT_EXTENSION    = 'XLS'
+      DEFAULT_FILE_NAME    = P_FILENAME
+*      WITH_ENCODING        = WITH_ENCODING
+      FILE_FILTER          = 'Only Excel Files (*.xls)|*.XLS|'
+      INITIAL_DIRECTORY    = 'C:\'
+*      PROMPT_ON_OVERWRITE  = 'X'
+    CHANGING
+      FILENAME             = FILENAME
+      PATH                 = PATH "DIRECTORY 경로
+      FULLPATH             = FULLPATH "DIRECTORY + 파일 경로
+*      USER_ACTION          = USER_ACTION
+*      FILE_ENCODING        = FILE_ENCODING
+          .
 
-  check not l_file is initial .
+  L_FILE = FULLPATH.
 
-  call function 'DOWNLOAD_WEB_OBJECT'
-    exporting
-      key         = wwwdata_item
-      destination = l_file.
+  "DOWNLOAD
+  IF FULLPATH IS NOT INITIAL.
+    "DOWNLOAD FILE
+    CALL FUNCTION 'DOWNLOAD_WEB_OBJECT'
+      EXPORTING
+        KEY               = WWWDATA_ITEM
+        DESTINATION       = L_FILE
+*     IMPORTING
+*       RC                = RC
+*     CHANGING
+*       TEMP              = TEMP
+              .
 
-  l_name = l_file .
-
-  call method cl_gui_frontend_services=>execute
-    exporting
-      document               = l_name
-    exceptions
-      cntl_error             = 1
-      error_no_gui           = 2
-      bad_parameter          = 3
-      file_not_found         = 4
-      path_not_found         = 5
-      file_extension_unknown = 6
-      error_execute_failed   = 7
-      synchronous_failed     = 8
-      not_supported_by_gui   = 9
-      others                 = 10.
-  if sy-subrc <> 0.
-    message id sy-msgid type sy-msgty number sy-msgno
-               with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
-    exit .
-  endif.
-
-endform.                    " HANDLE_USER_COMMAND
+    "SERVICE 창 생성
+    CALL METHOD CL_GUI_FRONTEND_SERVICES=>EXECUTE
+     EXPORTING
+       DOCUMENT               = FULLPATH
+*       APPLICATION            = APPLICATION
+*       PARAMETER              = PARAMETER
+*       DEFAULT_DIRECTORY      = DEFAULT_DIRECTORY
+*       MAXIMIZED              = MAXIMIZED
+*       MINIMIZED              = MINIMIZED
+*       SYNCHRONOUS            = SYNCHRONOUS
+*       OPERATION              = 'OPEN'
+            .
+  ENDIF.
+ENDFORM.                    " SAVE_FILE
 ```
 
 # BAPI (Buisness Application Programming Interface) : 학습 심화 필요
