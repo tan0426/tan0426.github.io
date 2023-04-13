@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 25. 찾아 볼 ALV LAYOUT, STYLE
+title: 25. 찾아 볼 ALV CONTROL
 parent: abapstudy
 nav_order: 25
 ---
-# 25. 찾아 볼 ALV LAYOUT, STYLE
+# 25. 찾아 볼 ALV CONTROL
             
 ## 1. 특정 조건에 EDIT ENABLE, DISABLE 예시1.
 
@@ -339,3 +339,73 @@ GS_LAYOUT-INFO_FNAME = 'COLOR'.
 
 ### 색상 표
 ![image](./abapstudy_img/abapstudy_53.png)
+
+## 3. ALV TOOLBAR CONTROL
+
+HANDLE TOOLBAR CLASS 선언.
+
+```abap
+*---------------------------------------------------------------------*
+*       CLASS LCL_EVENT_RECEIVER DEFINITION
+*---------------------------------------------------------------------*
+CLASS LCL_EVENT_RECEIVER DEFINITION.
+  PUBLIC SECTION.
+
+    METHODS : HANDLE_TOOLBAR FOR EVENT TOOLBAR OF CL_GUI_ALV_GRID
+                             IMPORTING E_OBJECT E_INTERACTIVE.
+ENDCLASS.
+
+*---------------------------------------------------------------------*
+* LOCAL CLASSES: IMPLEMENTATION                                       *
+*---------------------------------------------------------------------*
+CLASS LCL_EVENT_RECEIVER IMPLEMENTATION.
+
+  METHOD HANDLE_TOOLBAR.
+    PERFORM EVENT_HANDLE_TOOLBAR USING E_OBJECT
+                                       E_INTERACTIVE.
+  ENDMETHOD.
+
+ENDCLASS.
+```
+
+삭제할 아이콘들을 쭉 적어줌
+
+```abap
+*&---------------------------------------------------------------------*
+*&      Form  EVENT_HANDLE_TOOLBAR
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_E_OBJECT  text
+*      -->P_E_INTERACTIVE  text
+*----------------------------------------------------------------------*
+FORM EVENT_HANDLE_TOOLBAR  USING    P_OBJECT TYPE REF TO CL_ALV_EVENT_TOOLBAR_SET
+                                    P_INTERACTIVE TYPE CHAR01.
+  LOOP AT P_OBJECT->MT_TOOLBAR INTO GS_TOOLBAR.
+    CASE GS_TOOLBAR-FUNCTION.
+      WHEN '&CHECK'
+        OR '&REFRESH'
+        OR '&LOCAL&CUT'
+        OR '&LOCAL&APPEND'
+        OR '&LOCAL&INSERT_ROW'
+        OR '&LOCAL&DELETE_ROW'
+        OR '&LOCAL&COPY_ROW'
+        OR '&LOCAL'
+        OR '&MB_VIEW'
+        OR '&PRINT_BACK'
+        OR '&VIEW'
+        OR '&COLO'
+        OR '&GRAPH'
+        OR '&INFO'.
+        DELETE P_OBJECT->MT_TOOLBAR WHERE FUNCTION = GS_TOOLBAR-FUNCTION.
+    ENDCASE.
+  ENDLOOP.
+ENDFORM.                    " EVENT_HANDLE_TOOLBAR
+```
+
+그리고 SET HANDLER로 EVENT를 불러와 줌
+
+```abap
+DATA : LO_EVENT_RECEIVER TYPE REF TO LCL_EVENT_RECEIVER.
+SET HANDLER LO_EVENT_RECEIVER->HANDLE_TOOLBAR FOR GO_GRID1.
+```
