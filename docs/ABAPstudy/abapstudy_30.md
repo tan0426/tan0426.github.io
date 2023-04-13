@@ -5,6 +5,89 @@ parent: abapstudy
 nav_order: 30
 ---
 # 30. BDC, BAPI, 엑셀
+# EXCEL DOWNLOAD, UPLOAD
+## EXCEL DOWNLOAD
+
+엑셀 다운로드 버튼 USER-COMMAND.
+
+불러 올 엑셀 양식은 SMW0에 저장 한다.
+
+![image](./abapstudy_img/abapstudy_44.png)
+
+먼저 저장된 엑셀 양식을 불러온다.
+
+```abap
+FORM GET_WWWDATA .
+  SELECT SINGLE *
+    INTO CORRESPONDING FIELDS OF WWWDATA_ITEM
+    FROM WWWDATA
+    WHERE OBJID = 'ZCOTJ_TEST_01'.
+ENDFORM.                    " GET_WWWDATA
+```
+
+그 다음 BROWSE 창을 생성 한 후 컴퓨터에 다운받는 메세지를 호출하여 저장한다.
+
+```abap
+FORM DOWNLOAD_FILE USING P_FILENAME TYPE STRING.
+  DATA : TITLE TYPE STRING,
+         FILENAME TYPE STRING,
+         PATH TYPE STRING,
+         FULLPATH TYPE STRING,
+         USER_ACTION TYPE I.
+
+  DATA : L_FILE  TYPE RLGRAP-FILENAME.
+
+  "1. EXCEL DOWNLOAD BROWSE 창 생성
+  TITLE = TEXT-T02.
+
+  CALL METHOD CL_GUI_FRONTEND_SERVICES=>FILE_SAVE_DIALOG
+    EXPORTING
+      WINDOW_TITLE         = TITLE
+      DEFAULT_EXTENSION    = 'XLS'
+      DEFAULT_FILE_NAME    = P_FILENAME
+*      WITH_ENCODING        = WITH_ENCODING
+      FILE_FILTER          = 'Only Excel Files (*.xls)|*.XLS|'
+      INITIAL_DIRECTORY    = 'C:\'
+*      PROMPT_ON_OVERWRITE  = 'X'
+    CHANGING
+      FILENAME             = FILENAME
+      PATH                 = PATH "DIRECTORY 경로
+      FULLPATH             = FULLPATH "DIRECTORY + 파일 경로
+*      USER_ACTION          = USER_ACTION
+*      FILE_ENCODING        = FILE_ENCODING
+          .
+
+  L_FILE = FULLPATH.
+
+  "DOWNLOAD
+  IF FULLPATH IS NOT INITIAL.
+    "DOWNLOAD FILE
+    CALL FUNCTION 'DOWNLOAD_WEB_OBJECT'
+      EXPORTING
+        KEY               = WWWDATA_ITEM
+        DESTINATION       = L_FILE "RLGRAP-FILENAME으로 넣어주어야 함
+*     IMPORTING
+*       RC                = RC
+*     CHANGING
+*       TEMP              = TEMP
+              .
+
+    "SERVICE 창 생성
+    CALL METHOD CL_GUI_FRONTEND_SERVICES=>EXECUTE
+     EXPORTING
+       DOCUMENT               = FULLPATH
+*       APPLICATION            = APPLICATION
+*       PARAMETER              = PARAMETER
+*       DEFAULT_DIRECTORY      = DEFAULT_DIRECTORY
+*       MAXIMIZED              = MAXIMIZED
+*       MINIMIZED              = MINIMIZED
+*       SYNCHRONOUS            = SYNCHRONOUS
+*       OPERATION              = 'OPEN'
+            .
+  ENDIF.
+ENDFORM.                    " SAVE_FILE
+```
+
 # BDC (Batch Data Communication)
 BDC는 사용자가 Macro를 사용하여 SAP프로그램을 자동으로 수행하는 것과 같은 형태의 기능과 유사.
 
@@ -107,88 +190,6 @@ form run_bdc .
   endloop.
 
 endform.                    " EXECUTE_BDC
-```
-# EXCEL DOWNLOAD, UPLOAD
-## EXCEL DOWNLOAD
-
-엑셀 다운로드 버튼 USER-COMMAND.
-
-불러 올 엑셀 양식은 SMW0에 저장 한다.
-
-![image](./abapstudy_img/abapstudy_44.png)
-
-먼저 저장된 엑셀 양식을 불러온다.
-
-```abap
-FORM GET_WWWDATA .
-  SELECT SINGLE *
-    INTO CORRESPONDING FIELDS OF WWWDATA_ITEM
-    FROM WWWDATA
-    WHERE OBJID = 'ZCOTJ_TEST_01'.
-ENDFORM.                    " GET_WWWDATA
-```
-
-그 다음 BROWSE 창을 생성 한 후 컴퓨터에 다운받는 메세지를 호출하여 저장한다.
-
-```abap
-FORM DOWNLOAD_FILE USING P_FILENAME TYPE STRING.
-  DATA : TITLE TYPE STRING,
-         FILENAME TYPE STRING,
-         PATH TYPE STRING,
-         FULLPATH TYPE STRING,
-         USER_ACTION TYPE I.
-
-  DATA : L_FILE  TYPE RLGRAP-FILENAME.
-
-  "1. EXCEL DOWNLOAD BROWSE 창 생성
-  TITLE = TEXT-T02.
-
-  CALL METHOD CL_GUI_FRONTEND_SERVICES=>FILE_SAVE_DIALOG
-    EXPORTING
-      WINDOW_TITLE         = TITLE
-      DEFAULT_EXTENSION    = 'XLS'
-      DEFAULT_FILE_NAME    = P_FILENAME
-*      WITH_ENCODING        = WITH_ENCODING
-      FILE_FILTER          = 'Only Excel Files (*.xls)|*.XLS|'
-      INITIAL_DIRECTORY    = 'C:\'
-*      PROMPT_ON_OVERWRITE  = 'X'
-    CHANGING
-      FILENAME             = FILENAME
-      PATH                 = PATH "DIRECTORY 경로
-      FULLPATH             = FULLPATH "DIRECTORY + 파일 경로
-*      USER_ACTION          = USER_ACTION
-*      FILE_ENCODING        = FILE_ENCODING
-          .
-
-  L_FILE = FULLPATH.
-
-  "DOWNLOAD
-  IF FULLPATH IS NOT INITIAL.
-    "DOWNLOAD FILE
-    CALL FUNCTION 'DOWNLOAD_WEB_OBJECT'
-      EXPORTING
-        KEY               = WWWDATA_ITEM
-        DESTINATION       = L_FILE
-*     IMPORTING
-*       RC                = RC
-*     CHANGING
-*       TEMP              = TEMP
-              .
-
-    "SERVICE 창 생성
-    CALL METHOD CL_GUI_FRONTEND_SERVICES=>EXECUTE
-     EXPORTING
-       DOCUMENT               = FULLPATH
-*       APPLICATION            = APPLICATION
-*       PARAMETER              = PARAMETER
-*       DEFAULT_DIRECTORY      = DEFAULT_DIRECTORY
-*       MAXIMIZED              = MAXIMIZED
-*       MINIMIZED              = MINIMIZED
-*       SYNCHRONOUS            = SYNCHRONOUS
-*       OPERATION              = 'OPEN'
-            .
-  ENDIF.
-ENDFORM.                    " SAVE_FILE
 ```
 
 # BAPI (Buisness Application Programming Interface) : 학습 심화 필요
