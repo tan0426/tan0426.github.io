@@ -45,16 +45,12 @@ FORM DOWNLOAD_FILE USING P_FILENAME TYPE STRING.
       WINDOW_TITLE         = TITLE
       DEFAULT_EXTENSION    = 'XLS'
       DEFAULT_FILE_NAME    = P_FILENAME
-*      WITH_ENCODING        = WITH_ENCODING
       FILE_FILTER          = 'Only Excel Files (*.xls)|*.XLS|'
       INITIAL_DIRECTORY    = 'C:\'
-*      PROMPT_ON_OVERWRITE  = 'X'
     CHANGING
       FILENAME             = FILENAME
       PATH                 = PATH "DIRECTORY 경로
       FULLPATH             = FULLPATH "DIRECTORY + 파일 경로
-*      USER_ACTION          = USER_ACTION
-*      FILE_ENCODING        = FILE_ENCODING
           .
 
   L_FILE = FULLPATH.
@@ -66,23 +62,12 @@ FORM DOWNLOAD_FILE USING P_FILENAME TYPE STRING.
       EXPORTING
         KEY               = WWWDATA_ITEM
         DESTINATION       = L_FILE "RLGRAP-FILENAME으로 넣어주어야 함
-*     IMPORTING
-*       RC                = RC
-*     CHANGING
-*       TEMP              = TEMP
               .
 
     "SERVICE 창 생성
     CALL METHOD CL_GUI_FRONTEND_SERVICES=>EXECUTE
      EXPORTING
        DOCUMENT               = FULLPATH
-*       APPLICATION            = APPLICATION
-*       PARAMETER              = PARAMETER
-*       DEFAULT_DIRECTORY      = DEFAULT_DIRECTORY
-*       MAXIMIZED              = MAXIMIZED
-*       MINIMIZED              = MINIMIZED
-*       SYNCHRONOUS            = SYNCHRONOUS
-*       OPERATION              = 'OPEN'
             .
   ENDIF.
 ENDFORM.                    " SAVE_FILE
