@@ -73,6 +73,53 @@ FORM DOWNLOAD_FILE USING P_FILENAME TYPE STRING.
 ENDFORM.                    " SAVE_FILE
 ```
 
+## EXCEL UPLOAD
+
+각 EXPORTING값에 올린 엑셀에따른 값을 넣으면 인터널 테이블로 (INTERN) 나옴.
+이 인터널 테이블 GT_EXCEL은 ROW, COLUMN, VALUE 필드로 되어있다.
+예시)
+ROW  COLUMN  VALUE
+1    1       T001
+1    2       2012.10.01
+...
+
+```abap
+FORM GET_DATA_FROM_EXCEL USING P_BEGINCOL P_BEGINROW P_ENDCOL P_ENDROW.
+  "엑셀을 INT로 CONVERT하는 FUNCTION.
+  CALL FUNCTION 'ALSM_EXCEL_TO_INTERNAL_TABLE'
+    EXPORTING
+      FILENAME    = P_FILE
+      I_BEGIN_COL = P_BEGINCOL
+      I_BEGIN_ROW = P_BEGINROW
+      I_END_COL   = P_ENDCOL
+      I_END_ROW   = P_ENDROW
+    TABLES
+      INTERN      = GT_EXCEL. "엑셀 행,열 가져옴
+
+  PERFORM READ_EXCEL_DATA.
+ENDFORM.                    " GET_DATA_FROM_EXCEL
+```
+
+이 인터널 테이블을 동적으로 읽어서 인터널 테이블에 엑셀처럼 인터널테이블을 만들어 줌.
+
+```abap
+FORM READ_EXCEL_DATA.
+  DATA : ORF_1 TYPE REF TO CX_ROOT.
+
+  FIELD-SYMBOLS <FS> TYPE ANY.
+  "엑셀 필드 하나씩 읽어옴
+  LOOP AT GT_EXCEL INTO GS_EXCEL.
+    ASSIGN COMPONENT GS_EXCEL-COL OF STRUCTURE GS_DATA TO <FS>.
+    <FS> = GS_EXCEL-VALUE.
+
+    AT END OF ROW.
+      APPEND GS_DATA TO GT_DATA.
+      CLEAR GS_DATA.
+    ENDAT.
+  ENDLOOP.
+ENDFORM.                    " READ_EXCEL_DATA
+```
+
 # BDC (Batch Data Communication)
 BDC는 사용자가 Macro를 사용하여 SAP프로그램을 자동으로 수행하는 것과 같은 형태의 기능과 유사.
 
