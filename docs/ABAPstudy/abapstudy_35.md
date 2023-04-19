@@ -5,6 +5,7 @@ parent: abapstudy
 nav_order: 35
 ---
 
+
 # 35. 매크로 (Macro, Define)
 
 MACRO를 사용하려면 DEFINE함수를 써야한다.
