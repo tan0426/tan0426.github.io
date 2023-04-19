@@ -193,48 +193,93 @@ update : update mode
 
 TYPES : GTY_BDC TYPE BDCDATA,
 
-              GTY_MSG TYPE BDCMSGCOLL.
-  
-  
+        GTY_MSG TYPE BDCMSGCOLL.
+
+
 ## BDC 예시
 
 ### run BDC
 
-선언 해 준 인터널 테이블, 불러 올 엑셀 의 필드 순서와 갯수를 같게 해 주어야 한다.
+BDCDATA 테이블에 있는 필드 PROGRAM, DYNPRO, DYNBEGIN, FNAM, FVAL에 값을 넣어주면 된다.
+그래서 다음과 같이 BDC테이블과 스트럭쳐를 선언 해 준다.
 
-그리고 해당 트랜잭션에 레고드가 저장 되어 있어야 한다.
 ```abap
-form run_bdc .
-  tables : zco01.
+DATA : GT_BDC LIKE TABLE OF BDCDATA,
+       GS_BDC LIKE LINE OF GT_BDC,
+       GT_MSG LIKE TABLE OF BDCMSGCOLL,
+       GS_MSG LIKE LINE OF GT_MSG.
+```
 
-  data: l_except(1) type c.
+그리고 만약 화면 시작 DYNBEGIN = 'X' 이면 화면번호 DYNPRO, 프로그램명 PROGRAM 을 입력해주고,
+화면이 시작 된 후 필드에 값을 넣어주어야 하는 것이면 필드 이름 FNAM, 필드값 FVAL를 입력해 준다.
 
-  data: gt_zco06 like table of zco01 with header line.
+```abap
+FORM GET_BDC_DATA  USING    P_CHECK
+                            P_NAME
+                            P_VALUE.
 
-  data : l_index(10) type c.
+  IF P_CHECK = 'X'.
+    GS_BDC-PROGRAM = P_NAME.
+    GS_BDC-DYNPRO = P_VALUE.
+    GS_BDC-DYNBEGIN = P_CHECK.
+  ELSE.
+    GS_BDC-FNAM = P_NAME.
+    GS_BDC-FVAL = P_VALUE.
+  ENDIF.
 
-  loop at gt_itab into gs_itab.
-    clear : gt_bdcdata, gt_bdcdata[].
-    clear : gt_msgtab, gt_msgtab[].
+  APPEND GS_BDC TO GT_BDC.
+  CLEAR GS_BDC.
 
-    perform dynpro using : 'X'   'SAPMKAUF'     '0100',
-                           ' '   'COAS-AUART'   gs_itab-auart,
-                           ' '   'BDC_OKCODE'   '/00'.
+ENDFORM.                    " GET_BDC_DATA
+```
 
-    perform dynpro using : 'X'   'SAPMKAUF'     '0600',
-                           ' '   'COAS-KTEXT'   gs_itab-ktext,
-                           ' '   'COAS-BUKRS'   gs_itab-bukrs,
-                           ' '   'COAS-GSBER'   gs_itab-gsber,
-                           ' '   'COAS-WERKS'   gs_itab-werks,
-                           ' '   'COAS-SCOPE'   gs_itab-scope,
-                           ' '   'BDC_OKCODE'   '=SICH'.
+이 BDC PERFORM문을 이용해서 다음과 같이 매크로를 구성하면 된다.
 
-   call transaction 'KO01' using gt_bdcdata
-                           mode 'A'.
+```abap
+FORM BDC_PROGRAM .
+  CLEAR : GT_BDC.
 
-  endloop.
+  PERFORM GET_BDC_DATA USING : 'X' 'ZCOTJ_01'   '1000',
+                               ' ' 'BDC_CURSOR' 'P_RADI2',
+                               ' ' 'BDC_OKCODE' '=RADI',
+                               ' ' 'P_RADI1'    ' ',
+                               ' ' 'P_RADI2'    'X',
 
-endform.                    " EXECUTE_BDC
+                               'X' 'ZCOTJ_01'   '1000',
+                               ' ' 'BDC_CURSOR' 'P_RADI2',
+                               ' ' 'BDC_OKCODE' '=ONLI',
+                               ' ' 'P_RADI2'    'X'.
+
+  LOOP AT GT_DATA INTO GS_DATA.
+    PERFORM GET_BDC_DATA USING : 'X' 'ZCOTJ_01'   '0300',
+                                 ' ' 'BDC_CURSOR' 'P_ZPNUM',
+                                 ' ' 'BDC_OKCODE' '=RSRV',
+                                 ' ' 'P_ZNUM'     GS_DATA-ZOCUP_NUM,
+                                 ' ' 'P_ZDATE'    GS_DATA-FLDATE,
+                                 ' ' 'P_ZCODE'    GS_DATA-ZCODE,
+                                 ' ' 'P_ZPNUM'    GS_DATA-ZPER_NUM,
+
+                                 'X' 'ZCOTJ_01'   '0400',
+                                 ' ' 'BDC_OKCODE' '=RSRV',
+
+                                 'X' 'ZCOTJ_01'   '0400',
+                                 ' ' 'BDC_OKCODE' '/EBACK'.
+  ENDLOOP.
+
+  PERFORM GET_BDC_DATA USING : 'X' 'ZCOTJ_01'   '0300',
+                               ' ' 'BDC_OKCODE' '/EBACK',
+
+                               'X' 'ZCOTJ_01'   '0200',
+                               ' ' 'BDC_OKCODE' '/EBACK',
+
+                               'X' 'ZCOTJ_01'   '0100',
+                               ' ' 'BDC_OKCODE' '/EBACK',
+
+                               'X' 'ZCOTJ_01'   '1000',
+                               ' ' 'BDC_OKCODE' '/EBACK'.
+
+  CALL TRANSACTION 'ZCOTJ_01' USING GT_BDC MODE 'A'.
+ENDFORM.                    " BDC_PROGRAM
 ```
 
 # BAPI (Buisness Application Programming Interface) : 학습 심화 필요
