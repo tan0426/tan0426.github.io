@@ -409,3 +409,38 @@ ENDFORM.                    " EVENT_HANDLE_TOOLBAR
 DATA : LO_EVENT_RECEIVER TYPE REF TO LCL_EVENT_RECEIVER.
 SET HANDLER LO_EVENT_RECEIVER->HANDLE_TOOLBAR FOR GO_GRID1.
 ```
+
+## 4. SAVE LAYOUT 레이아웃 저장. VARIANT
+
+저장한 레이아웃을 파라미터에 입력해 ALV에 적용하는 것.
+
+```abap
+DATA : GS_VARIANT TYPE DISVARIANT.
+
+GS_VARIANT-REPORT = SY-REPID.
+GS_VARIANT-USERNAME = SY-UNAME.
+
+CALL METHOD GO_GRID1->SET_TABLE_FOR_FIRST_DISPLAY
+    EXPORTING
+*      I_BUFFER_ACTIVE               = I_BUFFER_ACTIVE
+*      I_BYPASSING_BUFFER            = I_BYPASSING_BUFFER
+*      I_CONSISTENCY_CHECK           = I_CONSISTENCY_CHECK
+*      I_STRUCTURE_NAME              = I_STRUCTURE_NAME
+      IS_VARIANT                    = GS_VARIANT
+*      I_SAVE                        = I_SAVE
+*      I_DEFAULT                     = 'X'
+      IS_LAYOUT                     = GS_LAYOUT
+*      IS_PRINT                      = IS_PRINT
+*      IT_SPECIAL_GROUPS             = IT_SPECIAL_GROUPS
+*      IT_TOOLBAR_EXCLUDING          = IT_TOOLBAR_EXCLUDING
+*      IT_HYPERLINK                  = IT_HYPERLINK
+*      IT_ALV_GRAPHICS               = IT_ALV_GRAPHICS
+*      IT_EXCEPT_QINFO               = IT_EXCEPT_QINFO
+*      IR_SALV_ADAPTER               = IR_SALV_ADAPTER
+    CHANGING
+      IT_OUTTAB                     = GT_DISPLAY1
+      IT_FIELDCATALOG               = GT_FCAT1
+      IT_SORT                       = GT_SORT
+*      IT_FILTER                     = IT_FILTER
+          .
+```
