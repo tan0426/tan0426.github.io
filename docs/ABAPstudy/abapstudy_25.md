@@ -414,6 +414,8 @@ SET HANDLER LO_EVENT_RECEIVER->HANDLE_TOOLBAR FOR GO_GRID1.
 
 저장한 레이아웃을 파라미터에 입력해 ALV에 적용하는 것.
 
+ALV에서 레이아웃 저장, 관리 기능만 추가하고 싶다면 다음과 같이 설정 하면 된다.
+
 ```abap
 DATA : GS_VARIANT TYPE DISVARIANT.
 
