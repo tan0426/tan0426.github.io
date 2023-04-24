@@ -50,6 +50,13 @@ FIELD-SYMBOLS [FS2] TYPE ANY TABLE을 사용하기 위해서는 ASSIGN 구문에
 FIELD SYMBOL을 READ 하기 위해서는 TYPE ANY TABLE로 선언하여야 FIELD SYMBOL이 인터널 테이블 역할을 수행하게 되고 (FNAME)을 사용하여
 동적 구문을 이용함.
 
+### FIELD SYMBOL 구문  선언3
+STRUCTURE B의 필드 A 내용을 FILED SYMBOL C에 넣으라는 뜻.
+
+```abap
+ASSIGN COMPONENT A OF STRUCTURE B TO <C>
+```
+
 ```abap
 READ TABLE <FS> WITH TABLE KEY (FNAME) =  'X' INTO WA.
 ```
