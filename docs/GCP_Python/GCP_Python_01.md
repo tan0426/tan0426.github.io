@@ -11,9 +11,9 @@ nav_order: 1
 
 Comput Engine VM instance Setting
 
-![Untitled](./GCP_Python_img/GCP_Python_1.PNG)
+![Untitled](./GCP_Python_img/GCP_Python_1.png)
 
-![Untitled](./GCP_Python_img/GCP_Python_2.PNG)
+![Untitled](./GCP_Python_img/GCP_Python_2.png)
 
 ## SSH(Secure SHell) Ubuntu에서 Python 설정
 
