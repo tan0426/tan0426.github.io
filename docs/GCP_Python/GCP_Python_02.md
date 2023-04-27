@@ -8,6 +8,7 @@ nav_order: 2
 # 2. Ubuntu Command
 
 | Command | Description | Example |
+| --- | --- | --- |
 | python3 -V | 현재 python 버젼 확인 |
 | wget https://bootstrap.pypa.io/get-pip.py | pip install 주소 |
 | sudo python3 get-pip.py | pip install |
