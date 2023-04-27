@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 3. my python program running process
-parent: GCP & Python
+parent: GCP_&_Python
 nav_order: 3
 ---
 
