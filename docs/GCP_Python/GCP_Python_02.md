@@ -7,7 +7,7 @@ nav_order: 2
 
 # 2. Ubuntu Command
 
-| Command | Description | Example |
+| Code or Command | Description | Example |
 | --- | --- | --- |
 | python3 -V | 현재 python 버젼 확인 |
 | wget https://bootstrap.pypa.io/get-pip.py | pip install 주소 |
@@ -19,6 +19,7 @@ nav_order: 2
 | :wq | 파일 내에서 저장 후 나가기 |
 | :q | 파일 내에서 그냥 나가기 |
 | python3 [file] | 해당 파이썬 파일 실행 | python3 test.py |
+| ctrl + C | 실행중인 파일 실행종료 |
 | nohup python3 [file] & | nohup 프로세스 유지, & 백그라운드 실행 | nohup python3 test.py & |
 | cat nohup.out | 로그 확인 |
 | ps, ps -A | 현재 실행중인 프로세스 ID 출력. ps -A는 전체 출력 |
