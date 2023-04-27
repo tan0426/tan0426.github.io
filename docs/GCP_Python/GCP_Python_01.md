@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 1. GCP, Python 환경설정
-parent: GCP_Python
+parent: GCP & Python
 nav_order: 1
 ---
 
