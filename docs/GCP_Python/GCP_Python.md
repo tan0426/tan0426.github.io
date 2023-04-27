@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GCP_Python
+title: GCP & Python
 nav_order: 4
 has_children: true
 permalink: /docs/GCP_Python
