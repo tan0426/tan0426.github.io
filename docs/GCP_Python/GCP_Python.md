@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CO_study
+title: GCP_Python
 nav_order: 4
 has_children: true
 permalink: /docs/CO_study
