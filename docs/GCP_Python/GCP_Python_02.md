@@ -19,3 +19,5 @@ nav_order: 2
 | :wq | 파일 내에서 저장 후 나가기 | |
 | :q | 파일 내에서 그냥 나가기 | |
 | python3 [file] | 해당 파이썬 파일 실행 | python3 test.py |
+| nohup python3 [file] & | nohup 프로세스 유지, & 백그라운드 실행 | nohup python3 test.py & |
+| cat nohup.out | 로그 확인 |
