@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 2. Ubuntu Command
-parent: GCP_Python
+parent: GCP & Python
 nav_order: 2
 ---
 
