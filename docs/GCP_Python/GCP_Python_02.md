@@ -21,5 +21,7 @@ nav_order: 2
 | python3 [file] | 해당 파이썬 파일 실행 | python3 test.py |
 | nohup python3 [file] & | nohup 프로세스 유지, & 백그라운드 실행 | nohup python3 test.py & |
 | cat nohup.out | 로그 확인 |
-| ps, ps -ef | 현재 실행중인 프로세스 출력. ps -ef는 전체 출력 |
-
+| ps, ps -A | 현재 실행중인 프로세스 ID 출력. ps -A는 전체 출력 |
+| kill -9 [PID] | 실행중인 백그라운드 파일 종료 | kill -9 1234 |
+| rm [file] | 파일 삭제 | rm test.py |
+| pidof python3 | 실행중인 모든 프로세스 PID 출력 |
