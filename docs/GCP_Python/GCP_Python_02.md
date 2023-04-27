@@ -6,3 +6,15 @@ nav_order: 2
 ---
 
 # 2. Ubuntu Command
+
+| Command | Description | Example |
+| python3 -V | 현재 python 버젼 확인 |
+| wget https://bootstrap.pypa.io/get-pip.py | pip install 주소 |
+| sudo python3 get-pip.py | pip install |
+| mkdir [folder] |  파일 생성 | mkdir test |
+| ls | 하위 파일 조회 |
+| cd [folder] | 해당 폴더로 이동 | cd test, cd ..|
+| vi [file] | 해당 파일 열기(없는 파일이면 생성) | vi test.py |
+| :wq | 파일 내에서 저장 후 나가기 |
+| :q | 파일 내에서 그냥 나가기 |
+| python3 [file] | 해당 파이썬 파일 실행 | python3 test.py |
