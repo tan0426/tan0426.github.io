@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 1. overview
-parent: CO_study
+parent: GCP_Python
 nav_order: 1
 ---
 
