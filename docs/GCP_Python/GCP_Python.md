@@ -3,8 +3,8 @@ layout: default
 title: GCP_Python
 nav_order: 4
 has_children: true
-permalink: /docs/CO_study
+permalink: /docs/GCP_Python
 ---
-# CO_study
- CO 스터디 자료
+# GCP_Python
+GCP_Python 스터디 자료
 {: .fs-6 .fw-300 }
