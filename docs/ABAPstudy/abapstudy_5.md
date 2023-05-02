@@ -12,8 +12,8 @@ RANGES 구조
 | --- | --- | --- |
 | SIGN | TYPE | DDSIGN |
 | OPTION | TYPE | DDOPTION |
-| LOW | TYPE | DOBJ |
-| HIGH | TYPE | DOBJ |
+| LOW | TYPE | - |
+| HIGH | TYPE | - |
 
 RANGES (붙여넣을 FIELD) FOR (대상 FIELD)
 
