@@ -271,6 +271,57 @@ CLASS LCL_EVENT_HANDLER IMPLEMENTATION.
 ENDCLASS.                    "lcl_event_handler IMPLEMENTATION
 ```
 
+컨테이너는 다음과같이 설정.
+
+```abap
+*&---------------------------------------------------------------------*
+*&      Form  CREATE_INSTANCE_0100
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM CREATE_INSTANCE_0100 .
+
+  CREATE OBJECT G_DOCK
+    EXPORTING
+      REPID     = SY-REPID
+      DYNNR     = SY-DYNNR
+      EXTENSION = 2000.
+
+  CREATE OBJECT G_SPLIT_CON
+    EXPORTING
+      PARENT  = G_DOCK
+      ROWS    = 2
+      COLUMNS = 1.
+
+  CALL METHOD G_SPLIT_CON->GET_CONTAINER
+    EXPORTING
+      ROW       = 1
+      COLUMN    = 1
+    RECEIVING
+      CONTAINER = G_HEAD_CON.
+
+  CALL METHOD G_SPLIT_CON->GET_CONTAINER
+    EXPORTING
+      ROW       = 2
+      COLUMN    = 1
+    RECEIVING
+      CONTAINER = G_DATA_CON.
+
+  CALL METHOD G_SPLIT_CON->SET_ROW_HEIGHT
+    EXPORTING
+      ID     = 1
+      HEIGHT = 10.
+
+  CREATE OBJECT G_GRID
+    EXPORTING
+      I_PARENT = G_DATA_CON.
+
+ENDFORM.                    " CREATE_INSTANCE_0100
+```
+
 띄워 줄 내용을 설정.
 
 ```abap
