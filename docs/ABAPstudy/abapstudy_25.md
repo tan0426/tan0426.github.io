@@ -174,6 +174,8 @@ ENDFORM.                    " ALV_REFRESH_GRID1
 
 그 후 LAYOUT을 적용시켜주고 싶다면 INIT_LAYOUT_0100과 같은 PERFORM문에 GS_LAYOUT-STYLEFNAME = 'STYLE' 을 다음과 같이 넣어주어야 한다.
 
+여기서 LAYOUT은 LVC_S_LAYO타입의 STRUCTURE이다.
+
 ```abap
 *&---------------------------------------------------------------------*
 *&      Form  INIT_LAYOUT_0100
