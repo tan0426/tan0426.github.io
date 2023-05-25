@@ -448,3 +448,71 @@ CALL METHOD GO_GRID1->SET_TABLE_FOR_FIRST_DISPLAY
 *      IT_FILTER                     = IT_FILTER
           .
 ```
+
+## 5. ALV 필드에 search help 넣기
+
+```abap
+*&---------------------------------------------------------------------*
+*&      Module  F4_MITEMCODE  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE f4_mitemcode INPUT.
+  "서치 헬프 가져올 테이블 지정
+  DATA : BEGIN OF LS_HELP,
+          MITEMCODE TYPE ZTJ_ITEM-ITEM_CODE,
+          COMPONENT TYPE ZTJ_ITEM-COMPONENT,
+         END OF LS_HELP,
+         LT_HELP LIKE TABLE OF LS_HELP.
+  DATA : LS_RETURN LIKE DDSHRETVAL,
+         LT_RETURN LIKE TABLE OF DDSHRETVAL.
+
+  SELECT ITEM_CODE AS MITEMCODE, COMPONENT
+    INTO CORRESPONDING FIELDS OF TABLE @LT_HELP
+    FROM ZTJ_ITEM.
+
+  SORT LT_HELP.
+
+  "SEARCH HELP FUNCTION
+  CALL FUNCTION 'F4IF_INT_TABLE_VALUE_REQUEST'
+    EXPORTING
+*     DDIC_STRUCTURE         = ' '
+      retfield               = 'MITEMCODE'
+*     PVALKEY                = ' '
+*     DYNPPROG               = ' '
+*     DYNPNR                 = ' '
+*     DYNPROFIELD            = ' '
+*     STEPL                  = 0
+*     WINDOW_TITLE           =
+*     VALUE                  = ' '
+     VALUE_ORG              = 'S'
+*     MULTIPLE_CHOICE        = ' '
+*     DISPLAY                = ' '
+*     CALLBACK_PROGRAM       = ' '
+*     CALLBACK_FORM          = ' '
+*     CALLBACK_METHOD        =
+*     MARK_TAB               =
+*   IMPORTING
+*     USER_RESET             =
+    tables
+      value_tab              = LT_HELP
+*     FIELD_TAB              =
+     RETURN_TAB             = LT_RETURN
+*     DYNPFLD_MAPPING        =
+   EXCEPTIONS
+     PARAMETER_ERROR        = 1
+     NO_VALUES_FOUND        = 2
+     OTHERS                 = 3
+            .
+  IF sy-subrc <> 0.
+* Implement suitable error handling here
+  ENDIF.
+
+  "서치헬프 창에서 선택하면 값을 가져옴
+  IF LT_RETURN IS NOT INITIAL.
+    LOOP AT LT_RETURN INTO LS_RETURN.
+      GS_BOMROUT-MITEMCODE = LS_RETURN-FIELDVAL.
+    ENDLOOP.
+  ENDIF.
+ENDMODULE.
+```
