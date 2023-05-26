@@ -33,8 +33,8 @@ $ cat /dev/null > nohup.out
 ### 4. 다시 재실행
 
 ```sh
-$ nohup python3 test.py &
-$ nohup python3 -u test.py &
+$ nohup python3 upbit_cointrade.py &
+$ nohup python3 -u upbit_cointrade.py &
 
 $ cat nohup.out
 start
