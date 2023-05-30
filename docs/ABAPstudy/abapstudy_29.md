@@ -7,7 +7,7 @@ nav_order: 29
 
 # 29. 관계 연산자, 산술 연산자
 
-*. 관계 연산자
+* 관계 연산자
 1. CO - Contains Only 'abc' - a,b,c (1글자 단위) 만 포함이면 true 입니다
 2. CN - Contains Not Only - 1번과 반대입니다
 3. CA - Contains Any 'abc' - a,b,c 중 하나라도 포함이면 true 입니다
