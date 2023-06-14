@@ -28,3 +28,4 @@ nav_order: 2
 | kill -9 [PID] | 실행중인 백그라운드 파일 종료 | kill -9 1234 |
 | rm [file] | 파일 삭제 | rm test.py |
 | pidof python3 | 실행중인 모든 프로세스 PID 출력 |
+| chmod 755 [file] | 권한을 755로 설정 | chmod 755 test.py |
