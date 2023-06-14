@@ -8,7 +8,8 @@ nav_order: 3
 # 3. my python program running process
 
 우선 제일 먼저 해당 python 파일이 있는 폴더에 들어가 주어야 한다.
-그다음 파일 권한은 755로 설정해준다 (확인은 ls -al로 가능)
+
+그다음 파일 권한은 755로 설정해준다. (확인은 ls -al로 가능. 초기에 설정해놓으면 그다음은 할 필요 없다)
 
 ```sh
 $ chmod 755 upbit_cointrade.py
