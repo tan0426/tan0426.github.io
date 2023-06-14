@@ -24,7 +24,7 @@ nav_order: 2
 | nohup python3 -u [file] | python파일의 print된 문구와 로그를 실시간으로 저장. | nohup python3 -u test.py |
 | cat nohup.out | 로그 확인 |
 | cat /dev/null > nohup.out | nohup.out에 저장된 로그 내용 삭제 |
-| ps, ps -A | 현재 실행중인 프로세스 ID 출력. ps -A는 전체 출력 |
+| ps, ps -A | 현재 실행중인 프로세스 ID 출력. ps -A는 전체 출력 |  ps -ef | grep [file] |
 | kill -9 [PID] | 실행중인 백그라운드 파일 종료 | kill -9 1234 |
 | rm [file] | 파일 삭제 | rm test.py |
 | pidof python3 | 실행중인 모든 프로세스 PID 출력 |
