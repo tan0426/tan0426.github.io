@@ -416,3 +416,39 @@ form read_item_data.
 
 endform.                    " READ_ITEM_DATA
 ```
+
+## Project System Module에서 BAPI
+
+프로젝트 시스템에서 BAPI는 다음과 같은 순서대로 사용 할 수 있다.
+
+1. 로직의 처음에, BAPI_PS_INITIALIZATION를 사용해 준다.
+2. 그 다음 필요한 만큼 개별 BAPI들을 사용한다.
+3. 로직의 끝에 precommit ( BAPI_PS_PRECOMMIT )를 쓰고, BAPI_TRANSACTION_COMMIT를 commit work가 끝난 뒤에 써 준다.
+
+## Example of use BAPI in Progject System Module
+
+```abap
+CALL FUNCTION 'BAPI_PS_INITIALIZATION'.
+CALL FUNCTION 'BAPI_BUS2001_SET_STATUS'
+ 
+PROJECT_DEFINITION               = LV_PRJDEF
+\UNDO_SYSTEM_STATUS              =
+*       UNDO_USER_STATUS         =
+        SET_SYSTEM_STATUS        = LV_CLSD
+*       SET_USER_STATUS          =
+     IMPORTING
+       RETURN                    = LV_RETURN
+     TABLES
+       E_RESULT                  = LT_RESULT
+*              .
+CALL FUNCTION 'BAPI_PS_PRECOMMIT'.
+       TABLES
+       ET_RETURN                 = IT_RETURN.
+CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
+* EXPORTING
+*   WAIT                         =
+* IMPORTING
+*   RETURN                       =
+```
+
+관련 자료 : https://wiki.scn.sap.com/wiki/display/PLM/How+to+use+BAPI+in+Project+System+Module
