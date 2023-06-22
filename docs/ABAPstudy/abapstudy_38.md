@@ -46,4 +46,4 @@ Function을 작성하고자 할 때에는 작성하는 내용을 위하여 필�
 
 이기종 시스템과 Interface 데이터를 송수신하거나, 타 시스템에 현재 수행중인 프로그램으로 데이터를 송수신 할 수 있는 기능을 갖고있는 Function이다.
 
-
+![Untitled](./abapstudy_img/abapstudy_64.png)
