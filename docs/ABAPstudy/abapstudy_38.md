@@ -47,3 +47,13 @@ Function을 작성하고자 할 때에는 작성하는 내용을 위하여 필�
 이기종 시스템과 Interface 데이터를 송수신하거나, 타 시스템에 현재 수행중인 프로그램으로 데이터를 송수신 할 수 있는 기능을 갖고있는 Function이다.
 
 ![Untitled](./abapstudy_img/abapstudy_64.png)
+
+이와같이 접속 가능한 RFC Connection을 확인하고 destination에 기입하면 된다. RFC Transaction이 너무 많을 시에는 RFC접속 또는 수행 오류가 발생하기도 한다.
+
+RFC는 SAP에서 제공하는 Real Time 송수신 기능이 아니다. Transaction이 일정시간대 너무 많이 몰리는 현상을 대비하기 위해 BC가 RFC Destination을 여러개 생성하여 work process를 wait하게 만들어 메모리 부여 시 작업을 수행하게도 한다.
+
+![Untitled](./abapstudy_img/abapstudy_65.png)
+
+위에있는 Connection test를 클릭하여 정상수행되면 RFC 연동이 가능한 상태인것을 알 수 있다.
+
+RFC를 실무로 구현 시 RFC내에서 필요한 Validation check는 필수가 된다. 유효하지 않은 값이 function으로 들어오지 않게 처리를 필수적으로 해주어야 한다.
