@@ -16,6 +16,18 @@ nav_order: 38
 
 여기서 Function Group은 Function을 모아 둔 곳으로, 별도로 수행하지는 않는다.
 
+Function Module은 Function Group에 속해 있으며, Function Group은 ASPLZ로 시작하는 모듈풀 프로그램을 INCLUDE로 포합하여 사용한다.
+
+### Function 종류
+
+Regular Function Module : 일반적으로 SAP 내부에서 사용 가능하도록 제공하는 Function (예 : date 함수)
+
+Remote-Enabled Module : RFC Function
+
+Update Module : 일괄적으로 DB변경 및 추가적인 Function을 포함하는 기능(SAP Bundling 기술중 하나)
+- Immediate start : database갱신용으로 사용시 설정, 높은 우선순위를 갖게 되며 오류 시 재시작 수행
+- Immediate start(not update): 높은 우선순위로 설정, 단 업데이트 불가.
+
 ## Function 생성 (SE37)
 
 Function Group을 생성 후 Function을 생성. Function Group이 Program이고 Function Module이 Program 내부에 있는 Sub-Rouine이라고 생각하면 된다.
@@ -29,3 +41,9 @@ Function Group을 생성 후 Function을 생성. Function Group이 Program이고
 Function을 작성하고자 할 때에는 작성하는 내용을 위하여 필요한 변수들이 어떤 것들이 있는지를 확인해야 하며, 필요한 변수들은 Import/Export Parameter들로 정의를 해 주어야 한다.
 
 만약 필요한 내용들 중에 Internal Table의 형태가 있다면, Tables라는 정의 부분에 정의를 해 주어야 한다. 물론 필요한 변수들이 없다면 Import/Export Parameter들로 정의를 할 필요는 없다.
+
+# RFC Function (Remote Function Call)
+
+이기종 시스템과 Interface 데이터를 송수신하거나, 타 시스템에 현재 수행중인 프로그램으로 데이터를 송수신 할 수 있는 기능을 갖고있는 Function이다.
+
+
