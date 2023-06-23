@@ -62,22 +62,33 @@ CLEAR GS_FCAT.
 ### 6. CURRENCY
 
 ```abap
-CASE GS_FIELDCAT-FIELDNAME.
-      WHEN 'LIFNR'.
-        LV_TEXT = '거래처번호'.
-      WHEN 'NAME1'.
-        LV_TEXT = '거래처명'.
-      WHEN 'STCD2'.
-        LV_TEXT = '사업자번호'.
-      WHEN 'ZBANKN'.
-        LV_TEXT = '은행명'.
-      WHEN 'BANKN'.
-        LV_TEXT = '계좌번호'.
-        GS_FIELDCAT-EDIT = 'X'.
-      WHEN 'DMBTR'.
-        LV_TEXT = '금액합계'.
-        GS_FIELDCAT-CURRENCY = 'KRW'.
-    ENDCASE.
+FORM FIELD_CATALOG_100  USING    PS_FCAT TYPE LVC_S_FCAT
+                                 PT_FCAT TYPE LVC_T_FCAT.
+  DEFINE _FCAT_MAC.
+    PS_FCAT-FIELDNAME = &1.
+    GV_TEXT = &2.
+    PS_FCAT-OUTPUTLEN = &3.
+    PS_FCAT-EDIT = &4.
+    PS_FCAT-REF_FIELD = &5.
+    PS_FCAT-CFIELDNAME = &5.
+
+    IF GV_TEXT IS NOT INITIAL.
+      PS_FCAT-COLTEXT =   GV_TEXT.
+      PS_FCAT-SCRTEXT_L = GV_TEXT.
+      PS_FCAT-SCRTEXT_M = GV_TEXT.
+      PS_FCAT-SCRTEXT_S = GV_TEXT.
+    ENDIF.
+
+    APPEND PS_FCAT TO PT_FCAT.
+    CLEAR PS_FCAT.
+  END-OF-DEFINITION.
+
+  _FCAT_MAC 'EBELN' '구매문서 번호'   '' ''  ''.
+  _FCAT_MAC 'BUKRS' '회사코드'        '' ''  ''.
+  _FCAT_MAC 'WAERS' '통화'            '' ''  ''.
+  _FCAT_MAC 'NETPR' '구매문서의 단가' '' 'X' 'WAERS'.
+
+ENDFORM.                    " FIELD_CATALOG_100
 ```
 
 또는 GS_FIELDCAT-CFIELDNAME = '통화필드 명' 으로 통화 별로 변환 해 줄수 있다.
