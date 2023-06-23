@@ -92,3 +92,41 @@ ENDFORM.                    " FIELD_CATALOG_100
 ```
 
 또는 GS_FIELDCAT-CFIELDNAME = '통화필드 명' 으로 통화 별로 변환 해 줄수 있다.
+
+## 통화를 변경하는 다른 방법들
+
+### WRITE
+ 
+```abap
+WRITE GS_DATA-PRICE CURRENCY 'WAERS' TO GS_DATA-PRICE DECIMALS 0. 
+```
+
+이 경우 만약 SAP에서 1.25값이라면, 통화필드값을 따라 (만약 KRW이라면) *100이 되어서 필드안에 들어간다.
+
+### FUNCTION
+
+```abap
+*&---------------------------------------------------------------------*
+*&      Form  AMT_CONV_TO_EXTERNAL
+*&---------------------------------------------------------------------*
+FORM amt_conv_to_external USING    p_waers
+                          CHANGING p_amount.
+
+  DATA:
+    l_internal TYPE bapicurr-bapicurr,
+    l_external TYPE bapicurr-bapicurr.
+
+  l_internal = p_amount.  "금액이 들어간다.
+
+  CALL FUNCTION 'BAPI_CURRENCY_CONV_TO_EXTERNAL'
+    EXPORTING
+      currency        = p_waers   "통화가 들어간다. KRW 겠지
+      amount_internal = l_internal "100.00이 들어간다.
+    IMPORTING
+      amount_external = l_internal. "10000이 나온다.
+
+p_amount = l_internal. 다시 원래 INTERFACE 할 필드에 넣은것이다.
+*  p_external = l_external.
+
+ENDFORM.                    " AMT_CONV_TO_EXTERNAL
+```
