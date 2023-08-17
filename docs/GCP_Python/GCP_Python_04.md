@@ -46,7 +46,7 @@ $ cat nohup.out
 start
 ```
 
-#4-2 tmux 패턴
+# 4-2 tmux 패턴
 
 실행중인 번호 tmux 확인 후 세션 강제 종료
 
