@@ -55,6 +55,10 @@ $ tmux ls
 ```
 
 ```sh
+0: 1 windows (created Thu Aug 17 01:40:25 2023) (attached)
+```
+
+```sh
 $ tmux kill-session -t 0
 ```
 
