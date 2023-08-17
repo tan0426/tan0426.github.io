@@ -5,7 +5,7 @@ parent: GCP & Python
 nav_order: 4
 ---
 
-# 3. my python program running process
+# 4. my python program running process
 
 우선 제일 먼저 해당 python 파일이 있는 폴더에 들어가 주어야 한다.
 
@@ -45,4 +45,26 @@ $ nohup python3 -u upbit_cointrade.py &
 $ cat nohup.out
 start
 ```
+
+#4-2 tmux 패턴
+
+실행중인 번호 tmux 확인 후 세션 강제 종료
+
+```sh
+$ tmux ls
+```
+
+```sh
+$ tmux kill-session -t 0
+```
+
+tmux 세션 다시 실행
+
+```sh
+$ cd coin
+$ tmux
+~/coin$ upbit_cointrade.py 
+```
+
+실행 후 창을 끄면 된다.
 
