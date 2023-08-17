@@ -63,7 +63,7 @@ tmux 세션 다시 실행
 ```sh
 $ cd coin
 $ tmux
-~/coin$ upbit_cointrade.py 
+~/coin$ python3 upbit_cointrade.py 
 ```
 
 실행 후 창을 끄면 된다.
