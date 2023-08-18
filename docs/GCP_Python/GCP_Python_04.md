@@ -45,6 +45,8 @@ $ nohup python3 -u upbit_cointrade.py &
 $ cat nohup.out
 start
 $ disown
+or
+$ disown -h
 ```
 
 # 4-2 tmux 패턴
